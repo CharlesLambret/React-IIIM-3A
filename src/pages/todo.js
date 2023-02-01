@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Button } from "@mui/material";
 
 const TodoList = () => {
   const [tasks, setTasks] = useState([]);
@@ -23,15 +24,15 @@ const TodoList = () => {
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
         />
-        <button type="submit">Ajouter</button>
+        <Button variant="contained" type="submit">Ajouter</Button>
       </form>
       <ul>
         {tasks.map((task, index) => (
           <li key={index}>
             {task}
-            <button type="button" onClick={() => handleDelete(index)}>
+            <Button variant="contained" type="button" onClick={() => handleDelete(index)}>
               Supprimer
-            </button>
+            </Button>
           </li>
         ))}
       </ul>
