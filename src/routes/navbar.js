@@ -1,16 +1,18 @@
 import React, { useState } from "react";
-import { Button } from "@mui/material";
+import { Button, fabClasses } from "@mui/material";
 import "./navbar.css";
 
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [ShowHiddenModal] = useState(false);
 
-  const handleLogin = () => {
-    setIsLoggedIn(true);
+  const handleLogin = () => {true
+    ShowHiddenModal(true);
+    setIsLoggedIn();
   };
 
   const handleLogout = () => {
-    setIsLoggedIn(false);
+    setIsLoggedIn();
   };
 
   return (

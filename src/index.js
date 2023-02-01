@@ -4,6 +4,8 @@ import ErrorPage from "./pages/pageerreur";
 import TodoList from "./pages/todo";
 import WindowWidth from "./pages/windowidth";
 import Navbar from "./pages/navbar";
+import { Data } from './context/taskcontext';
+
 import {
   createBrowserRouter,
   RouterProvider,
@@ -30,7 +32,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Navbar/>
-    <RouterProvider router={router} />
+    <Data>
+      <RouterProvider router={router} />
+    </Data>
   </React.StrictMode>
 );
 
