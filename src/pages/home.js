@@ -96,7 +96,7 @@ const Liste = () => {
                 <option value="terminé">terminé</option>
               </select>
             </label>
-            <Button variant="contained" type="submit">Ajouter</Button>
+            <Button id="AddtaskButton" variant="contained" type="submit">Ajouter</Button>
             <Button
               type="button"
               onClick={() => setShowModal(false)}
@@ -107,6 +107,7 @@ const Liste = () => {
         </div>
       )}
       <div className="kanban-container">
+        
         <div className="kanban-column">
           <h3>Non démarré</h3>
           {tasks
@@ -116,8 +117,8 @@ const Liste = () => {
                 <CardContent>
                 {task.title}
                 <div className="task-actions">
-                  <Button onClick={() => handleDeleteTask(task.id)}>Delete</Button>
-                  <Button onClick={() => handleEditTask(task.id)}>Edit</Button>
+                  <Button class="TaskButton" onClick={() => handleDeleteTask(task.id)}>Delete</Button>
+                  <Button class="TaskButton" onClick={() => handleEditTask(task.id)}>Edit</Button>
                 </div>
                 </CardContent>
               </Card>
@@ -132,8 +133,8 @@ const Liste = () => {
                 <CardContent>
                 {task.title}
                 <div className="task-actions">
-                  <Button onClick={() => handleDeleteTask(task.id)}>Delete</Button>
-                  <Button onClick={() => handleEditTask(task.id)}>Edit</Button>
+                  <Button class="TaskButton" onClick={() => handleDeleteTask(task.id)}>Delete</Button>
+                  <Button class="TaskButton" onClick={() => handleEditTask(task.id)}>Edit</Button>
                 </div>
                 </CardContent>
               </Card>
@@ -148,8 +149,8 @@ const Liste = () => {
                 <CardContent>
                 {task.title}
                 <div className="task-actions">
-                  <Button onClick={() => handleDeleteTask(task.id)}>Delete</Button>
-                  <Button onClick={() => handleEditTask(task.id)}>Edit</Button>
+                  <Button class="TaskButton" onClick={() => handleDeleteTask(task.id)}>Delete</Button>
+                  <Button class="TaskButton" onClick={() => handleEditTask(task.id)}>Edit</Button>
                 </div>
                 </CardContent>
               </Card>
@@ -164,8 +165,8 @@ const Liste = () => {
                 <CardContent>
                 {task.title}
                 <div className="task-actions">
-                  <Button onClick={() => handleDeleteTask(task.id)}>Delete</Button>
-                  <Button onClick={() => handleEditTask(task.id)}>Edit</Button>
+                  <Button class="TaskButton" onClick={() => handleDeleteTask(task.id)}>Delete</Button>
+                  <Button class="TaskButton" onClick={() => handleEditTask(task.id)}>Edit</Button>
                 </div>
                 </CardContent>
               </Card>
