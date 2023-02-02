@@ -3,7 +3,7 @@ import { createContext } from "react";
 
 export const TaskContext = createContext();
 
-export function Data(props){
+export function Taskdata(props){
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -57,21 +57,40 @@ export function Data(props){
     event.preventDefault();
     setTasks([...tasks, { ...newTask, id: tasks.length + 1 }]);
     setShowCreateModal(false);
+    console.log(newTask.title);
   };
 
   const [showCreateModal, setShowCreateModal] = useState(false);
 
+  const [editingTask, setEditingTask] = useState(null);
+  
+
+  const handleSaveTask = (editingTask) => {
+    setTasks(
+    tasks.map((task) =>
+    task.id === editingTask.id ? { ...task, ...editingTask } : task,
+  
+    )
+
+    );
+    setEditingTask(null);
+    };
+    
+
   return (
     <TaskContext.Provider
       value={{
-        tasks,
+        tasks, 
         setTasks,
-        newTask,
+        newTask, 
         setNewTask,
         handleInputChange,
         handleSubmit,
-        showCreateModal,
-        setShowCreateModal
+        handleSaveTask,
+        showCreateModal, 
+        setShowCreateModal,
+        editingTask, 
+        setEditingTask,
       }}
     >
       {props.children}

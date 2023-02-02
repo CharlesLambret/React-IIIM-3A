@@ -1,36 +1,24 @@
 import React, { useState } from "react";
 import { Button, fabClasses } from "@mui/material";
 import "./navbar.css";
+import {signUp, signIn, signOut } from "../firebase";
 
 const Navbar = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [ShowHiddenModal] = useState(false);
-
-  const handleLogin = () => {true
-    ShowHiddenModal(true);
-    setIsLoggedIn();
-  };
-
-  const handleLogout = () => {
-    setIsLoggedIn();
-  };
-
+ 
   return (
     <nav className="navbar">
-      {!isLoggedIn && (
         <>
           <Button variant="contained" className="navbar-button">Inscription</Button>
-          <Button variant="contained" className="navbar-button" onClick={handleLogin}>
+          <Button variant="contained" className="navbar-button" >
             Connexion
           </Button>
         </>
-      )}
-      {isLoggedIn && (
-        <Button variant="contained" className="navbar-button" onClick={handleLogout}>
+        <Button variant="contained" className="navbar-button" >
           Déconnexion
         </Button>
-      )}
     </nav>
+    
+    
   );
 };
 

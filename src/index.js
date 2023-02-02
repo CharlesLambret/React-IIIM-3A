@@ -1,22 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import ErrorPage from "./pages/pageerreur";
-import TodoList from "./pages/todo";
-import WindowWidth from "./pages/windowidth";
-import Navbar from "./pages/navbar";
-import { Data } from './context/taskcontext';
+import ErrorPage from "./routes/pageerreur";
+import TodoList from "./routes/todo";
+import WindowWidth from "./routes/windowidth";
+import Kanban from "./routes/accueil/home";
+import Navbar from "./routes/navbar";
+import { Taskdata } from './context/taskcontext';
 
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
 import "./index.css";
-import Liste from "./pages/home";
+
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Liste/>,
+    element: <Kanban/>,
     errorElement: <ErrorPage />,
   },
   {
@@ -32,9 +33,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Navbar/>
-    <Data>
+    <Taskdata>
       <RouterProvider router={router} />
-    </Data>
+    </Taskdata>
   </React.StrictMode>
 );
 
