@@ -48,12 +48,17 @@ export function Taskdata(props){
   });
 
   const handleInputChange = event => {
-    setNewTask({
+    setEditingTask({
       ...newTask,
       [event.target.name]: event.target.value
     });
   };
-
+  const handleInputChangeEdit = event => {
+    setTasks({
+      ...tasks,
+      [event.target.name]: event.target.value
+    });
+  };
   const handleSubmit = event => {
     event.preventDefault();
     setTasks([...tasks, { ...newTask, id: tasks.length + 1 }]);
@@ -72,16 +77,14 @@ export function Taskdata(props){
   const handleEditTask = (taskId) => {
     const task = tasks.find((task) => task.id === taskId);
     setEditingTask(task);
+    console.log(setEditingTask.title)
   };
 
   const handleSaveTask = (editingTask) => {
     setTasks(
-    tasks.map((task) =>
-    task.id === editingTask.id ? { ...task, ...editingTask } : task,
-  
+    [...tasks, {id : editingTask.id, title : editingTask.title, description : editingTask.description, startDate : editingTask.startDate, endDate : editingTask.endDate, status : editingTask.status}],
     )
-
-    );
+    console.log(editingTask.title)
     setEditingTask(null);
     };
     
@@ -94,6 +97,7 @@ export function Taskdata(props){
         newTask, 
         setNewTask,
         handleInputChange,
+        handleInputChangeEdit,
         handleSubmit,
         handleEditTask,
         handleDeleteTask,
