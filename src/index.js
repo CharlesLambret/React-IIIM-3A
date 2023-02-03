@@ -31,14 +31,14 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <>
+  <div>
     <RegisterStateProvider>
       <Navbar/>
       <Taskdata>
         <RouterProvider router={router} />
       </Taskdata>
-    <RegisterStateProvider/>
-  </>
+    </RegisterStateProvider>
+  </div>
   
 
 );
