@@ -2,10 +2,10 @@ import { TaskContext } from "../../../context/taskcontext"
 import {react, useContext } from "react";
 import { Button } from "@mui/material";
 
-export default function EditModalTask ({task}) {
+export default function EditModalTask () {
 
 
-    const {handleSaveTask, editingTask, handleInputChange, setEditingTask } = useContext(TaskContext);
+    const {handleSaveTask, editingTask, handleInputChangeEdit, setEditingTask } = useContext(TaskContext);
     return(
         <div className="modal-background">
           <form
@@ -19,7 +19,7 @@ export default function EditModalTask ({task}) {
                 name="title"
                 placeholder={editingTask.title}
                 value={setEditingTask.title}
-                onChange={handleInputChange}
+                onChange={handleInputChangeEdit}
                 required
                 
               />
@@ -31,7 +31,7 @@ export default function EditModalTask ({task}) {
                 name="description"
                 placeholder={editingTask.description}
                 value={setEditingTask.description}
-                onChange={handleInputChange}
+                onChange={handleInputChangeEdit}
                 required
                 
               />
@@ -43,7 +43,7 @@ export default function EditModalTask ({task}) {
                 name="startDate"
                 placeholder={editingTask.startDate}
                 value={setEditingTask.startDate}
-                onChange={handleInputChange}
+                onChange={handleInputChangeEdit}
                 required
                 
               />
@@ -55,7 +55,7 @@ export default function EditModalTask ({task}) {
                 name="endDate"
                 placeholder={editingTask.endDate}
                 value={setEditingTask.endDate}
-                onChange={handleInputChange}
+                onChange={handleInputChangeEdit}
                 required
                 
               />
@@ -66,7 +66,7 @@ export default function EditModalTask ({task}) {
                 name="status"
                 value={setEditingTask.status}
                 placeholder={editingTask.status}
-                onChange={handleInputChange}
+                onChange={handleInputChangeEdit}
                 required
                 
                 
