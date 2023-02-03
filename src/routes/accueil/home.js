@@ -1,4 +1,4 @@
-
+import {Table, TableHead, TableContainer, TableRow, TableCell, TableBody, Paper} from '@mui/material';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -74,9 +74,9 @@ export default function Kanban() {
         <div className="kanban-column" id='non-demarrer'>
           <h3>Non démarré</h3>
           {tasks
-            .filter(tasks => tasks.status === "non démarré")
+            .filter(task => task.status === "non démarré")
             .map(task => (
-              <TaskCard task={task} />
+              <TaskCard task={task}/>
             ))}
         </div>
         <div className="kanban-column" id='en-cours'>
@@ -111,7 +111,35 @@ export default function Kanban() {
     </div>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Titre</TableCell>
+              <TableCell align="right">Description</TableCell>
+              <TableCell align="right">Date de début</TableCell>
+              <TableCell align="right">Date de fin</TableCell>
+              <TableCell align="right">Statut</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+          {tasks.map(task =>(
+              <TableRow
+                key={task.id}
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              >
+                <TableCell component="th" scope="task">
+                  {task.title}
+                </TableCell>
+                <TableCell align="right">{task.description}</TableCell>
+                <TableCell align="right">{task.startDate}</TableCell>
+                <TableCell align="right">{task.endDate}</TableCell>
+                <TableCell align="right">{task.status}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
       </TabPanel>
       <TabPanel value={value} index={2}>
         Item Three

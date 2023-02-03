@@ -26,6 +26,7 @@ const router = createBrowserRouter([
     path: "/kanban",
     element: <Kanban/>,
     errorElement: <ErrorPage />,
+    
   },
   {
     path: "/signup",
