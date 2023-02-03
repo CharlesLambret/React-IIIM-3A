@@ -32,7 +32,7 @@ export function ModalContextProvider(props) {
   }
 
   return (
-    <ModalContext.Provider value={{modalState, toggleModals}}>
+    <ModalContext.Provider value={{modalState, setModalState, toggleModals}}>
       {props.children}
     </ModalContext.Provider>
   )

@@ -7,7 +7,7 @@ import { Modal } from '@mui/material';
 
 
 export const SignIn = () => {
-    const modalState = useContext(ModalContext)
+    const {modalState, setModalState} = useContext(ModalContext)
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');

@@ -13,12 +13,8 @@ export const Navbar = () => {
   
   const { showLogOut,
     setShowLogOut,
-    showSignInModal,
     setShowSignInModal,
-    showSignUpModal,
-    setShowSignUpModal,
-    showLogOutModal,
-    setShowLogOutModal, modalState, setModalState} = React.useContext(RegisterContext)
+    setShowLogOutModal, setModalState} = React.useContext(RegisterContext)
 
 
   return (
@@ -28,7 +24,7 @@ export const Navbar = () => {
           <>
            
            
-            <Button variant="contained" className="navbar-button" onClick={setModalState.signInModal(true)}>
+            <Button variant="contained" className="navbar-button">
               Connexion
             </Button>
             {setShowSignInModal === true &&  (

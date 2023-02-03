@@ -13,6 +13,7 @@ import {
 import "./index.css";
 import { SignUp } from "./composants/modal/register/signup";
 import LandingPage from "./routes/landingpage/landingpage";
+import { ModalContextProvider } from "./context/modalcontext";
 
 
 const router = createBrowserRouter([
@@ -39,10 +40,12 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <div>
     <RegisterStateProvider>
+      <ModalContextProvider>
       <Navbar/>
       <Taskdata>
         <RouterProvider router={router} />
       </Taskdata>
+      </ModalContextProvider>
     </RegisterStateProvider>
   </div>
   
