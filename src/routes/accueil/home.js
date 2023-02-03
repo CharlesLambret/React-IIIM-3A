@@ -15,13 +15,13 @@ const Kanban = () => {
   return (
     <div className="dashboard">
       <h2>Kanban des tâches</h2>
-      <Button variant="contained" onClick={() => setShowCreateModal(true)}>Ajouter une tâche</Button>
+      <Button variant="contained" id="bouton" onClick={() => setShowCreateModal(true)}>Ajouter une tâche</Button>
       {showCreateModal && (
         <CreateTaskModal/>
       )}
       <div className="kanban-container">
         
-        <div className="kanban-column">
+        <div className="kanban-column" id='non-demarrer'>
           <h3>Non démarré</h3>
           {tasks
             .filter(tasks => tasks.status === "non démarré")
@@ -29,7 +29,7 @@ const Kanban = () => {
               <TaskCard task={task} />
             ))}
         </div>
-        <div className="kanban-column">
+        <div className="kanban-column" id='en-cours'>
           <h3>En cours</h3>
           {tasks
             .filter(task => task.status === "en cours")
@@ -37,7 +37,7 @@ const Kanban = () => {
               <TaskCard task={task}/>
             ))}
         </div>
-        <div className="kanban-column">
+        <div className="kanban-column" id='recettage'>
           <h3>Recettage</h3>
           {tasks
             .filter(task => task.status === "recettage")
@@ -45,7 +45,7 @@ const Kanban = () => {
               <TaskCard task={task}/>
             ))}
         </div>
-        <div className="kanban-column">
+        <div className="kanban-column" id='terminer'>
           <h3>Terminé</h3>
           {tasks
             .filter(task => task.status === "terminé")

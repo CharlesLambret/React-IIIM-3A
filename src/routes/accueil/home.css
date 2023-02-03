@@ -49,3 +49,29 @@
   padding:1%;
 }
 
+
+
+#terminer{
+
+  background-color: rgba(135, 211, 124, 0.65);
+}
+
+#recettage{
+
+  background-color: rgba(245, 230, 83, 0.65);
+}
+
+#en-cours{
+
+  background-color: rgb(241, 143, 1, 0.65);
+}
+
+#non-demarrer{
+
+  background-color: rgb(223, 41, 53, 0.65);
+}
+
+#bouton{
+
+  background-color: rgba(134, 97, 193);
+}
