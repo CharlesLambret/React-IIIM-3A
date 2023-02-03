@@ -74,9 +74,9 @@ export default function Kanban() {
         <div className="kanban-column" id='non-demarrer'>
           <h3>Non démarré</h3>
           {tasks
-            .filter(tasks => tasks.status === "non démarré")
+            .filter(task => task.status === "non démarré")
             .map(task => (
-              <TaskCard task={task} />
+              <TaskCard task={task}/>
             ))}
         </div>
         <div className="kanban-column" id='en-cours'>

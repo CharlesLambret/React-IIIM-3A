@@ -1,44 +1,30 @@
 import React, { useState } from "react";
 import { createContext } from "react";
+import { db } from "../firebase";
+import { collection, getDocs} from "firebase/firestore";
+import { useEffect } from "react";
 
 export const TaskContext = createContext();
 
 export function Taskdata(props){
-  
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      title: "Tâche 1",
-      description: "description",
-      startDate: "15/01/2021",
-      endDate: "12/03/2022",
-      status: "non démarré"
-    },
-    {
-      id: 2,
-      title: "Tâche 2",
-      description: "description",
-      startDate: "12/02/2025",
-      endDate: "25/06/2027",
-      status: "en cours"
-    },
-    {
-      id: 3,
-      title: "Tâche 3",
-      description: "description",
-      startDate: "15/07/1982",
-      endDate: "25/03/2023",
-      status: "recettage"
-    },
-    {
-      id: 4,
-      title: "Tâche 4",
-      description: "description",
-      startDate: "15/01/1999",
-      endDate: "30/01/2000",
-      status: "terminé"
-    }
-  ]);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const [status, setStatus] = useState("");
+
+  const [tasks, setTasks] = useState([]);
+
+  async function getTasks() {
+   
+    const TasksCol = collection(db, 'Tâches');
+    const TasksSnapshot = await getDocs(TasksCol);
+    const TasksList = TasksSnapshot.docs.map(doc => ({id:doc.id, ...doc.data()}));
+    setTasks (TasksList);
+  }
+    useEffect(getTasks, []);
+
+  //
   const [newTask, setNewTask] = useState({
     title: "",
     description: "",
@@ -106,8 +92,19 @@ export function Taskdata(props){
         setShowCreateModal,
         editingTask, 
         setEditingTask,
+        title, 
+        setTitle, 
+        description,
+        setDescription,
+        startDate,
+        setStartDate,
+        endDate,
+        setEndDate,
+        status,
+        setStatus
       }}
     >
+     
       {props.children}
     </TaskContext.Provider>
   );

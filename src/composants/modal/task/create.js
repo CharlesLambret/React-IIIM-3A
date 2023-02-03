@@ -1,19 +1,30 @@
 import { Button } from '@mui/material';
 import {react, useContext} from 'react';
 import { TaskContext } from '../../../context/taskcontext';
+import { db } from '../../../firebase';
+import { collection, addDoc } from "firebase/firestore";
+import { ModalContext } from '../../../context/modalcontext';
 
 export default function CreateTaskModal () {
-    const {handleSubmit,newTask, setShowCreateModal, handleInputChange} = useContext(TaskContext)
+    const {title, setTitle, description, setDescription,  startDate, setStartDate, endDate, setEndDate, status, setStatus} = useContext(TaskContext)
+    const {setShowCreateModal} = useContext(ModalContext);
+
+    const posttask = (e) => addDoc(collection(db, "Tâches"), {
+      title: [title] ,
+      description : [description],
+      startDate : [startDate] ,
+      endDate: [endDate] ,
+      status: [status] , 
+    }); 
     return(
         <div className="modal-background">
-          <form onSubmit={handleSubmit} className="modal-form">
+          <form onSubmit={posttask} className="modal-form">
             <label>
               Titre de la tâche :
               <input
                 type="text"
                 name="title"
-                value={newTask.title}
-                onChange = {handleInputChange}
+                onChange = {(e) => setTitle(e.target.value)}
                 required
               />
             </label>
@@ -22,8 +33,7 @@ export default function CreateTaskModal () {
             <input
               type="text"
               name="description"
-              value={newTask.description}
-              onChange = {handleInputChange}
+              onChange = {(e) => setDescription(e.target.value)}
               required
             />
           </label>
@@ -32,8 +42,7 @@ export default function CreateTaskModal () {
             <input
               type="date"
               name="startDate"
-              value={newTask.startDate}
-              onChange = {handleInputChange}
+              onChange = {(e) => setStartDate(e.target.value)}
               required
             />
           </label>
@@ -42,8 +51,7 @@ export default function CreateTaskModal () {
             <input
               type="date"
               name="endDate"
-              value={newTask.endDate}
-              onChange = {handleInputChange}
+              onChange = { (e) => setEndDate(e.target.value)}
               required
             />
           </label>
@@ -52,8 +60,8 @@ export default function CreateTaskModal () {
               Statut :
               <select
                 name="status"
-                value={newTask.status}
-                onChange = {handleInputChange}
+              
+                onChange = {(e) => setStatus(e.target.value)}
                 required
               >
                 <option value="non démarré">non démarré</option>
