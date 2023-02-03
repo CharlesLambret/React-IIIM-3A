@@ -76,7 +76,9 @@ export function Taskdata(props){
 
   const handleSaveTask = (editingTask) => {
     setTasks(
-      tasks => tasks.map((task) =>
+    tasks.map((task) =>
+    task.id === editingTask.id ? { ...task, ...editingTask } : task,
+  
     )
 
     );

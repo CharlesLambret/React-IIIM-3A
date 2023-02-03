@@ -12,11 +12,17 @@ import {
 } from "react-router-dom";
 import "./index.css";
 import { SignUp } from "./composants/modal/register/signup";
+import LandingPage from "./routes/landingpage/landingpage";
 
 
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <LandingPage/>,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/kanban",
     element: <Kanban/>,
     errorElement: <ErrorPage />,
   },
