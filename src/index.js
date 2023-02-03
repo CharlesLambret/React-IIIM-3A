@@ -4,9 +4,9 @@ import ErrorPage from "./routes/pageerreur";
 import TodoList from "./routes/todo";
 import WindowWidth from "./routes/windowidth";
 import Kanban from "./routes/accueil/home";
-import Navbar from "./routes/navbar";
+import {Navbar} from "./composants/navbar/navbar";
 import { Taskdata } from './context/taskcontext';
-
+import { RegisterStateProvider } from "./context/registercontext";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -31,12 +31,16 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <Navbar/>
-    <Taskdata>
-      <RouterProvider router={router} />
-    </Taskdata>
-  </React.StrictMode>
+  <>
+    <RegisterStateProvider>
+      <Navbar/>
+      <Taskdata>
+        <RouterProvider router={router} />
+      </Taskdata>
+    <RegisterStateProvider/>
+  </>
+  
+
 );
 
 

@@ -3,6 +3,8 @@ import {react, useContext } from "react";
 import { Button } from "@mui/material";
 
 export default function EditModalTask ({task}) {
+
+
     const {handleSaveTask, editingTask, handleInputChange, setEditingTask } = useContext(TaskContext);
     return(
         <div className="modal-background">
@@ -16,8 +18,10 @@ export default function EditModalTask ({task}) {
                 type="text"
                 name="title"
                 placeholder={editingTask.title}
+                value={setEditingTask.title}
                 onChange={handleInputChange}
                 required
+                
               />
             </label>
             <label>
@@ -26,8 +30,10 @@ export default function EditModalTask ({task}) {
                 type="text"
                 name="description"
                 placeholder={editingTask.description}
+                value={setEditingTask.description}
                 onChange={handleInputChange}
                 required
+                
               />
             </label>
             <label>
@@ -36,8 +42,10 @@ export default function EditModalTask ({task}) {
                 type="date"
                 name="startDate"
                 placeholder={editingTask.startDate}
+                value={setEditingTask.startDate}
                 onChange={handleInputChange}
                 required
+                
               />
             </label>
             <label>
@@ -46,18 +54,22 @@ export default function EditModalTask ({task}) {
                 type="date"
                 name="endDate"
                 placeholder={editingTask.endDate}
+                value={setEditingTask.endDate}
                 onChange={handleInputChange}
                 required
+                
               />
             </label>
             <label>
               Statut :
               <select
                 name="status"
-                value={editingTask.status}
+                value={setEditingTask.status}
                 placeholder={editingTask.status}
                 onChange={handleInputChange}
                 required
+                
+                
               >
                 <option value="non démarré">non démarré</option>
                 <option value="en cours">en cours</option>

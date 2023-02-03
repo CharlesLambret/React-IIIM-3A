@@ -17,24 +17,24 @@ export function Taskdata(props){
       id: 2,
       title: "Tâche 2",
       description: "description",
-      startDate: "",
-      endDate: "",
+      startDate: "12/02/2025",
+      endDate: "25/06/2027",
       status: "en cours"
     },
     {
       id: 3,
       title: "Tâche 3",
       description: "description",
-      startDate: "",
-      endDate: "",
+      startDate: "15/07/1982",
+      endDate: "25/03/2023",
       status: "recettage"
     },
     {
       id: 4,
       title: "Tâche 4",
       description: "description",
-      startDate: "",
-      endDate: "",
+      startDate: "15/01/1999",
+      endDate: "30/01/2000",
       status: "terminé"
     }
   ]);
@@ -64,6 +64,14 @@ export function Taskdata(props){
 
   const [editingTask, setEditingTask] = useState(null);
   
+  const handleDeleteTask = (taskId) => {
+    setTasks(tasks.filter((task) => task.id !== taskId));
+  };
+
+  const handleEditTask = (taskId) => {
+    const task = tasks.find((task) => task.id === taskId);
+    setEditingTask(task);
+  };
 
   const handleSaveTask = (editingTask) => {
     setTasks(
@@ -86,6 +94,8 @@ export function Taskdata(props){
         setNewTask,
         handleInputChange,
         handleSubmit,
+        handleEditTask,
+        handleDeleteTask,
         handleSaveTask,
         showCreateModal, 
         setShowCreateModal,

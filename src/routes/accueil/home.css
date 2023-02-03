@@ -48,13 +48,4 @@
   min-height:130px;
   padding:1%;
 }
-.content{
-  display:flex;
-  flex-direction: column;
-}
-.Dates {
-  display:flex;
-  flex-direction:row;
-  justify-content:space-between;
-  width:100%;
-}
+
