@@ -4,6 +4,7 @@ import { createContext } from "react";
 export const TaskContext = createContext();
 
 export function Taskdata(props){
+  
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -75,9 +76,7 @@ export function Taskdata(props){
 
   const handleSaveTask = (editingTask) => {
     setTasks(
-    tasks.map((task) =>
-    task.id === editingTask.id ? { ...task, ...editingTask } : task,
-  
+      tasks => tasks.map((task) =>
     )
 
     );

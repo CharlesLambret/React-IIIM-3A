@@ -1,9 +1,13 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {  SignInMethod, signInWithEmailAndPassword   } from 'firebase/auth';
 import { auth } from '../../../firebase';
 import { NavLink, useNavigate } from 'react-router-dom'
- 
+import { ModalContext } from '../../../context/modalcontext';
+import { Modal } from '@mui/material';
+
+
 export const SignIn = () => {
+    const modalState = useContext(ModalContext)
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -26,7 +30,10 @@ export const SignIn = () => {
     }
  
     return(
-                    <div>                                            
+        <>
+        {modalState.signInModal && (
+                    <Modal
+                    close={setModalState.signInModal(false)}>                                            
                         <p> FocusApp </p>                       
                                                        
                         <form>                                              
@@ -74,9 +81,11 @@ export const SignIn = () => {
                             </NavLink>
                         </p>
                                                    
-                    </div>
+                    </Modal>
                
        
-    )
+    )}
+</>
+)
 }
  

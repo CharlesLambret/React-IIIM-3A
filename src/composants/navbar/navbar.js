@@ -4,14 +4,13 @@ import "./navbar.css";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../firebase";
 import {SignIn} from "../modal/register/signin";
-import {SignUp} from "../modal/register/signup";
 import {LogOut} from "../modal/register/logout";
 import { RegisterContext } from "../../context/registercontext";
 import {useContext} from "react";
-
+import {useNavigate} from "react-router-dom";
 
 export const Navbar = () => {
-
+  
   const { showLogOut,
     setShowLogOut,
     showSignInModal,
@@ -19,25 +18,7 @@ export const Navbar = () => {
     showSignUpModal,
     setShowSignUpModal,
     showLogOutModal,
-    setShowLogOutModal} = React.useContext(RegisterContext)
-  
-  useEffect(()=>{
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-          // User is signed in, see docs for a list of available properties
-          // https://firebase.google.com/docs/reference/js/firebase.User
-          const uid = user.uid;
-          // ...
-          console.log("uid", uid)
-          setShowLogOut(true)
-         
-        } else {
-          setShowLogOut(false)
-          console.log("user is logged out")
-        }
-      });
-     
-}, [])
+    setShowLogOutModal, modalState, setModalState} = React.useContext(RegisterContext)
 
 
   return (
@@ -45,20 +26,18 @@ export const Navbar = () => {
         
         {showLogOut === false &&  (
           <>
-            <Button variant="contained" className="navbar-button" onClick={() => setShowSignInModal(true)}>Inscription</Button>
-            {showSignInModal === true &&  (
-              <SignIn/>
-            )}
-            <Button variant="contained" className="navbar-button" onClick={() => setShowSignUpModal(true)}>
+           
+           
+            <Button variant="contained" className="navbar-button" onClick={setModalState.signInModal(true)}>
               Connexion
             </Button>
-            {showSignUpModal === true &&  (
-              <SignUp/>
-              )}
+            {setShowSignInModal === true &&  (
+              <SignIn/>
+            )}
           </>
         )
         }
-        {showLogOut === true &&  (
+        {setShowLogOut === true &&  (
           <>
             <Button variant="contained" className="navbar-button" onClick={() => setShowLogOutModal(true)}>
               Déconnexion
@@ -69,4 +48,3 @@ export const Navbar = () => {
       </nav>
   );
 };
-    

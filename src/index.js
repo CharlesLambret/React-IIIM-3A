@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import ErrorPage from "./routes/pageerreur";
-import TodoList from "./routes/todo";
 import WindowWidth from "./routes/windowidth";
 import Kanban from "./routes/accueil/home";
 import {Navbar} from "./composants/navbar/navbar";
@@ -12,6 +11,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import "./index.css";
+import { SignUp } from "./composants/modal/register/signup";
 
 
 const router = createBrowserRouter([
@@ -21,8 +21,8 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/todo",
-    element: <TodoList/>
+    path: "/signup",
+    element: <SignUp/>
   },
   {
     path: "/window",
