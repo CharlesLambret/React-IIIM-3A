@@ -1,0 +1,38 @@
+html{
+
+    background: linear-gradient(to bottom right, rgba(239, 188, 213), rgba(134, 97, 193), rgba(190, 151, 198));
+    width: 100vw;
+    height: 100vw;
+    
+}
+
+body{
+
+    font-family: 'Roboto', sans-serif;
+}
+
+.global img{
+
+   width: 50vw; 
+}
+
+.global{
+    width: 100vw;
+}
+.hero{
+    width:100%;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-evenly
+}
+.gauche{
+    display:flex;
+    flex-direction:column;
+    width:25vw;
+}
+#bouton1{
+
+    background-color: rgba(75, 82, 103);
+    width: 10vw;
+ }
+

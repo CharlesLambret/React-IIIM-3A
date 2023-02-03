@@ -24,7 +24,7 @@ export const Navbar = () => {
           <>
            
            
-            <Button variant="contained" className="navbar-button" id="bouton">
+            <Button variant="contained"  id="bouton">
               Connexion
             </Button>
             {setShowSignInModal === true &&  (
@@ -35,7 +35,7 @@ export const Navbar = () => {
         }
         {setShowLogOut === true &&  (
           <>
-            <Button variant="contained" className="navbar-button" id="bouton" onClick={() => setShowLogOutModal(true)}>
+            <Button variant="contained"  id="bouton" onClick={() => setShowLogOutModal(true)}>
               Déconnexion
             </Button>
           </>

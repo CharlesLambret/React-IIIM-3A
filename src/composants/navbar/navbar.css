@@ -4,10 +4,13 @@
     display:flex;
     flex-direction:row;
     align-items:center;
-    justify-content:space-around;
+    padding-left: 92vw;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    
+   
 }
 
 #bouton{
-    background-color: rgba(134, 97, 193);
+    background-color: rgba(75, 82, 103);
+   
 }
