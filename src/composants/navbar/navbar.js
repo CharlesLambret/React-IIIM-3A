@@ -7,30 +7,25 @@ import {SignIn} from "../modal/register/signin";
 import {LogOut} from "../modal/register/logout";
 import { RegisterContext } from "../../context/registercontext";
 import {useContext} from "react";
-import {useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 
-export const Navbar = () => {
+export default function Navbar (){
   
   const { showLogOut,
     setShowLogOut,
     setShowSignInModal,
     setShowLogOutModal, setModalState} = React.useContext(RegisterContext)
-
+  
+ 
 
   return (
     <nav className="navbar">
         
         {showLogOut === false &&  (
           <>
-           
-           
-            <Button variant="contained"  id="bouton">
-              Connexion
-            </Button>
-            {setShowSignInModal === true &&  (
-              <SignIn/>
-            )}
-          </>
+           <Button variant="contained" id="bouton">Connexion</Button>
+           </>
+            
         )
         }
         {setShowLogOut === true &&  (

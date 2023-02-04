@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import ErrorPage from "./routes/pageerreur";
 import WindowWidth from "./routes/windowidth";
 import Kanban from "./routes/accueil/home";
-import {Navbar} from "./composants/navbar/navbar";
+import Navbar from "./composants/navbar/navbar";
 import { Taskdata } from './context/taskcontext';
 import { RegisterStateProvider } from "./context/registercontext";
 import {
@@ -14,7 +14,7 @@ import "./index.css";
 import { SignUp } from "./composants/modal/register/signup";
 import LandingPage from "./routes/landingpage/landingpage";
 import { ModalContextProvider } from "./context/modalcontext";
-
+import { SignIn } from "./composants/modal/register/signin";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +31,10 @@ const router = createBrowserRouter([
   {
     path: "/signup",
     element: <SignUp/>
+  },
+  {
+    path: "/signin",
+    element: <SignIn/>
   },
   {
     path: "/window",

@@ -3,8 +3,9 @@ import {  SignInMethod, signInWithEmailAndPassword, signInWithRedirect, GoogleAu
 import { auth } from '../../../firebase';
 import { NavLink, useNavigate } from 'react-router-dom'
 import { ModalContext } from '../../../context/modalcontext';
-import { Modal } from '@mui/material';
+import { Modal, TextField } from '@mui/material';
 import { Button } from '@mui/material';
+import "./register.css";
 
 export const SignIn = () => {
     const {modalState, setModalState} = useContext(ModalContext)
@@ -22,6 +23,7 @@ export const SignIn = () => {
           const token = credential.accessToken;
           // The signed-in user info.
           const user = result.user;
+          console.log(user.email)
           // ...
         }).catch((error) => {
           // Handle Errors here.
@@ -36,36 +38,32 @@ export const SignIn = () => {
     }
 
 
-    const onLogin = (e) => {
-        e.preventDefault();
+    const onSignIn = (e) => {
         signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            // Signed in
-            const user = userCredential.user;
-            navigate("/")
-            console.log(user);
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorCode, errorMessage)
-        });
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
        
     }
+    
  
     return(
         <>
-        {modalState.signInModal && (
-                    <Modal
-                    close={setModalState.signInModal(false)}>                                            
-                        <p> FocusApp </p>                       
+                    <div class="registerform">                                            
+                        <p> Login </p>                       
                                                        
-                        <form>                                              
-                            <div>
+                        <form onSubmit={onSignIn}>                                              
+                            <div class="inputdiv">
                                 <label htmlFor="email-address">
                                     Email address
                                 </label>
-                                <input
+                                <TextField
                                     id="email-address"
                                     name="email"
                                     type="email"                                    
@@ -75,11 +73,11 @@ export const SignIn = () => {
                                 />
                             </div>
 
-                            <div>
+                            <div class="inputdiv">
                                 <label htmlFor="password">
                                     Password
                                 </label>
-                                <input
+                                <TextField
                                     id="password"
                                     name="password"
                                     type="password"                                    
@@ -89,11 +87,8 @@ export const SignIn = () => {
                                 />
                             </div>
                                                 
-                            <div>
-                                <button                                    
-                                    onClick={onLogin}                                        
-                                >      
-                                    Login                                                                  
+                            <div class="inputdiv">
+                                <button type="submit">S'inscrire                                          
                                 </button>
                             </div>                               
                         </form>
@@ -106,10 +101,7 @@ export const SignIn = () => {
                         </p>
                         
                                                    
-                    </Modal>
-               
-       
-    )}
+                    </div>
 </>
 )
 }

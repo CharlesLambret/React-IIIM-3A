@@ -1,0 +1,14 @@
+.registerform{
+    width:30vw;
+    margin-left:35vw;
+    background-color:white;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:center;
+    padding:1%;
+}
+.inputdiv{
+    display:flex;
+    flex-direction:column;
+}
