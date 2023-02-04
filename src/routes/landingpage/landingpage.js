@@ -4,7 +4,7 @@ import { Button } from "@mui/material"
 
 export default function LandingPage (){
 
-    const kanban = require("../../Image/kanban.png") 
+    const kanban = require("../../Image/kanban.jpg") 
 
     return(
         <div className="global">
