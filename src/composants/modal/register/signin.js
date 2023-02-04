@@ -55,6 +55,7 @@ export const SignIn = () => {
  
     return(
         <>
+        <Modal open={modalState} onClose={() => setModalState(false)}>
                     <div class="registerform">                                            
                         <p> Login </p>                       
                                                        
@@ -102,6 +103,7 @@ export const SignIn = () => {
                         
                                                    
                     </div>
+                    </Modal>
 </>
 )
 }

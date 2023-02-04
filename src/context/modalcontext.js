@@ -7,26 +7,37 @@ export function ModalContextProvider(props) {
   // modal
   const [modalState, setModalState] = useState({
     signUpModal: false,
-    signInModal: false
+    signInModal: false,
+    LogOutModal: false,
   })
 
   const toggleModals = modal => {
     if(modal === "signIn") {
       setModalState({
         signUpModal: false,
-        signInModal: true
+        signInModal: true,
+        LogOutModal: false,
       })
     }
     if(modal === "signUp") {
       setModalState({
         signUpModal: true,
-        signInModal: false
+        signInModal: false,
+        LogOutModal: false,
+      })
+    }
+    if(modal === "LogOut") {
+      setModalState({
+        signUpModal: false,
+        signInModal: false,
+        LogOutModal: true,
       })
     }
     if(modal === "close") {
       setModalState({
         signUpModal: false,
-        signInModal: false
+        signInModal: false, 
+        LogOutModal: false,
       })
     }
   }

@@ -1,16 +1,15 @@
-import {Table, TableHead, TableContainer, TableRow, TableCell, TableBody, Paper} from '@mui/material';
+import { Button } from '@mui/material';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import React, { useState, useContext } from "react";
-import "./home.css";
-import { Button } from "@mui/material";
-import {TaskContext} from "../../context/taskcontext";
-import CreateTaskModal from "../../composants/modal/task/create";
-import EditModalTask from "../../composants/modal/task/edit";
-import TaskCard from "../../composants/cards/task";
+import React, { useContext } from "react";
+import Kanban from './views/kanban';
+import TaskTable from './views/table';
+import { TaskContext } from '../../context/taskcontext';
+import CreateTaskModal from '../../composants/modal/task/create';
+import EditModalTask from '../../composants/modal/task/edit';
 
 function TabPanel(props) {
 
@@ -46,104 +45,41 @@ function a11yProps(index) {
   };
 }
 
-export default function Kanban() {
-  const {tasks, setTasks, newTask, handleInputChange, handleSubmit, showCreateModal, setShowCreateModal, editingTask, setEditingTask, handleDeleteTask, handleEditTask, handleSaveTask } = useContext(TaskContext);
+export default function Home() {
   const [value, setValue] = React.useState(0);
-
+  const {showCreateModal, setShowCreateModal, editingTask} = useContext(TaskContext);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <div>
+      <Button variant="contained" id="bouton1" onClick={() => setShowCreateModal(true)}>Ajouter une tâche</Button>
+      <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Kanban" {...a11yProps(0)} />
           <Tab label="Tableau" {...a11yProps(1)} />
         </Tabs>
       </Box>
-      <TabPanel value={value} index={0}>
-      <div className="dashboard">
-      <h2>Kanban des tâches</h2>
-      <Button variant="contained" id="bouton" onClick={() => setShowCreateModal(true)}>Ajouter une tâche</Button>
       {showCreateModal && (
         <CreateTaskModal/>
       )}
-      <div className="kanban-container">
-        
-        <div className="kanban-column" id='non-demarrer'>
-          <h3>Non démarré</h3>
-          {tasks
-            .filter(task => task.status === "non démarré")
-            .map(task => (
-              <TaskCard task={task}/>
-            ))}
-        </div>
-        <div className="kanban-column" id='en-cours'>
-          <h3>En cours</h3>
-          {tasks
-            .filter(task => task.status === "en cours")
-            .map(task => (
-              <TaskCard task={task}/>
-            ))}
-        </div>
-        <div className="kanban-column" id='recettage'>
-          <h3>Recettage</h3>
-          {tasks
-            .filter(task => task.status === "recettage")
-            .map(task => (
-              <TaskCard task={task}/>
-            ))}
-        </div>
-        <div className="kanban-column" id='terminer'>
-          <h3>Terminé</h3>
-          {tasks
-            .filter(task => task.status === "terminé")
-            .map(task => (
-              <TaskCard task={task}/>
-            ))}
-          
-        </div>
-      </div>
-      {editingTask !== null ? (
+     {editingTask !== null ? (
         <EditModalTask/>
       ): null}
-    </div>
+      <TabPanel value={value} index={0}>
+        <Kanban/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Titre</TableCell>
-              <TableCell align="right">Description</TableCell>
-              <TableCell align="right">Date de début</TableCell>
-              <TableCell align="right">Date de fin</TableCell>
-              <TableCell align="right">Statut</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-          {tasks.map(task =>(
-              <TableRow
-                key={task.id}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-              >
-                <TableCell component="th" scope="task">
-                  {task.title}
-                </TableCell>
-                <TableCell align="right">{task.description}</TableCell>
-                <TableCell align="right">{task.startDate}</TableCell>
-                <TableCell align="right">{task.endDate}</TableCell>
-                <TableCell align="right">{task.status}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+        <TaskTable/>
       </TabPanel>
       <TabPanel value={value} index={2}>
         Item Three
       </TabPanel>
     </Box>
+    
+    </div>
+    
   );
 }

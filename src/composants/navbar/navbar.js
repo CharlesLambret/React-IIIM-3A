@@ -9,6 +9,7 @@ import { RegisterContext } from "../../context/registercontext";
 import {useContext} from "react";
 import {Link} from "react-router-dom";
 
+
 export default function Navbar (){
   
   const { showLogOut,
@@ -23,14 +24,17 @@ export default function Navbar (){
         
         {showLogOut === false &&  (
           <>
-           <Button variant="contained" id="bouton">Connexion</Button>
+          <Button variant="contained" class="bouton-custom" onClick={() => setModalState(true)}>
+            Inscription
+          </Button>
+           <Button variant="contained" class="bouton-custom" onClick={() => setModalState(true)}>Connexion</Button>
            </>
             
         )
         }
         {setShowLogOut === true &&  (
           <>
-            <Button variant="contained"  id="bouton" onClick={() => setShowLogOutModal(true)}>
+            <Button variant="contained"  class="bouton-custom" onClick={() => setShowLogOutModal(true)}>
               Déconnexion
             </Button>
           </>

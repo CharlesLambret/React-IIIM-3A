@@ -1,0 +1,26 @@
+
+.modal-background{
+    width:50%;
+    height:50%;
+    background-color:white;
+    
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 8px;
+    position:center;
+    position:fixed;
+    padding:3%;
+    display:flex;
+    justify-content:center;
+  }
+  .modal-form{
+    display:flex;
+    width:80%;
+    flex-direction: column;
+    justify-content:center;
+  }
+  .modal-form input, .modal-form select{
+    margin-top:1%;
+    margin-left:20px;
+    border-radius:15px;
+    margin-bottom:1.5%;
+  }

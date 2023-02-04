@@ -1,92 +1,47 @@
 import { TaskContext } from "../../../context/taskcontext"
 import {react, useContext } from "react";
 import { Button } from "@mui/material";
+import FormControl from "@mui/material/FormControl";
+import TitleInput from "./inputs/title";
+import DescriptionInput from "./inputs/description";
+import StartDateInput from "./inputs/startdate";
+import EndDateInput from "./inputs/enddate";
+import StatusInput from "./inputs/status";
+import { ModalContext } from "../../../context/modalcontext";
+import "./taskcrud.css"
 
 export default function EditModalTask () {
 
 
+    
     const {handleSaveTask, editingTask, handleInputChangeEdit, setEditingTask } = useContext(TaskContext);
+    
     return(
         <div className="modal-background">
-          <form
-            onSubmit={handleSaveTask}
-            className="modal-form"
-          >
-            <label>
-              Titre de la tâche :
-              <input
-                type="text"
-                name="title"
-                placeholder={editingTask.title}
-                value={setEditingTask.title}
-                onChange={handleInputChangeEdit}
-                required
-                
-              />
-            </label>
-            <label>
-              Description :
-              <input
-                type="text"
-                name="description"
-                placeholder={editingTask.description}
-                value={setEditingTask.description}
-                onChange={handleInputChangeEdit}
-                required
-                
-              />
-            </label>
-            <label>
-              Date de début :
-              <input
-                type="date"
-                name="startDate"
-                placeholder={editingTask.startDate}
-                value={setEditingTask.startDate}
-                onChange={handleInputChangeEdit}
-                required
-                
-              />
-            </label>
-            <label>
-              Date de fin :
-              <input
-                type="date"
-                name="endDate"
-                placeholder={editingTask.endDate}
-                value={setEditingTask.endDate}
-                onChange={handleInputChangeEdit}
-                required
-                
-              />
-            </label>
-            <label>
-              Statut :
-              <select
-                name="status"
-                value={setEditingTask.status}
-                placeholder={editingTask.status}
-                onChange={handleInputChangeEdit}
-                required
-                
-                
-              >
-                <option value="non démarré">non démarré</option>
-                <option value="en cours">en cours</option>
-                <option value="recettage">recettage</option>
-                <option value="terminé">terminé</option>
-              </select>
-            </label>
-            <Button variant="contained" type="submit">
-              Enregistrer
-            </Button>
+          <FormControl onSubmit={handleSaveTask} class="modal-form">
+            
+            <TitleInput placeholder={editingTask.title} onChange={handleInputChangeEdit}
+                 />
+            <DescriptionInput placeholder={editingTask.description} onChange={handleInputChangeEdit}/>
+          
+          
+            
+            
+            <StartDateInput onChange={handleInputChangeEdit}/>
+          
+          
+            <EndDateInput onChange={handleInputChangeEdit} />
+            <StatusInput onChange={handleInputChangeEdit} placeholder={editingTask.status}/>
+            
+            <Button id="AddtaskButton" variant="contained" type="submit">Ajouter</Button>
             <Button
               type="button"
               onClick={() => setEditingTask(null)}
             >
               Annuler
             </Button>
-          </form>
+          </FormControl>
+          
         </div>
     )
 }
