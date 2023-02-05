@@ -14,6 +14,7 @@ import {ModalContext} from '../../context/modalcontext';
 import { SignIn } from '../../composants/modal/register/signin';
 import { LogOut } from '../../composants/modal/register/logout';
 import "./home.css"
+
 function TabPanel(props) {
 
   const { children, value, index, ...other } = props;
@@ -62,7 +63,6 @@ export default function Home() {
 
   return (
     <div className="dashboarddiv">
-      <Button variant="contained" id="bouton1"  onClick={handleOpenCreateTaskModal}>Ajouter une tâche</Button>
       <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" id ="tab">

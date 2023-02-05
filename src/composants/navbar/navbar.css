@@ -1,25 +1,59 @@
 .navbar{
-    width:100%;
-    max-width:100vw;
+    width:90%;
     height:80px;
+    margin: 0 auto;
     display:flex;
-    flex-direction:row;
+    justify-content:space-between;
     align-items:center;
-    justify-content:flex-end;
-    padding-right:10%;
-    position:fixed;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    background: linear-gradient(rgba(248, 189, 127),rgba(245, 172, 114),rgba(242, 170, 126));
-    margin-bottom:130px;
-
+    font-family: 'Roboto','Segoe UI';
     
-   
 }
 
+.menu{
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu span{
+    color: #19274E;
+    font-weight: 400;
+}
+
+.menu span:first-child{
+    font-weight: bold;
+}
+
+.logo{
+    font-weight: bold;
+    color: #0C9EC0;
+    font-size: 1.5em;
+    display: flex;
+    align-items: center;
+    height: 80px;
+}
+
+.logo img{
+    width: 32px;
+    height: 32px;
+    margin-top: 0;
+    margin-right: 10px ;
+    
+}
 #bouton{
-    background-color: rgba(75, 82, 103);
-   
+    cursor: pointer;
+    background-color: #F5FDFF;
+    border: 2px solid #0C9EC0;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #0C9EC0;
+    height: 50px;
+    box-shadow: inherit;
 }
-.bouton-custom{
-    margin-right:1vw;
-}
+
+#bouton:hover{
+    cursor: pointer;
+    background-color: #0C9EC0;
+    border: 2px solid #F5FDFF;
+    color: #F5FDFF;
+ }

@@ -8,23 +8,30 @@ import {LogOut} from "../modal/register/logout";
 import { RegisterContext } from "../../context/registercontext";
 import {NavLink, Router} from "react-router-dom";
 import {ModalContext} from "../../context/modalcontext";
+const logo = require("../../Image/kanban.png");
 
 export default function Navbar (){
   
-  const { setShowLogOutModal, showLogOut, setShowLogOut} = useContext(RegisterContext)
+  const { setShowLogOutModal, 
+    showLogOut, 
+    setShowLogOut} = useContext(RegisterContext)
+
   const {modalState, setModalState} = useContext(ModalContext)
     
  const ShowLoginModal = () => { setModalState({signInModal: true}) }
 
   return (
-    <nav className="navbar">
+    <nav className="navbar" id="top">
+       <div className="logo"><img src={logo} /> ProPlanner</div>
         {showLogOut === false &&  (
           <>
           
-          <a href="localhost:3000/signup" class="bouton-custom">Inscription</a>
+          
          
          
-           <Button variant="contained" class="bouton-custom" onClick={() => ShowLoginModal}>Connexion</Button>
+           <Button variant="contained" id="bouton" >
+              Connexion
+            </Button>
            </>
             
         )
