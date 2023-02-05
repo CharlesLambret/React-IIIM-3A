@@ -1,45 +1,38 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import {  createUserWithEmailAndPassword  } from 'firebase/auth';
-import {auth} from '../../../firebase';
+import {  CreateUserWithEmailAndPassword  } from 'firebase/auth';
+import {auth} from '../../firebase';
 import "./register.css";
-import { TextField } from '@mui/material';
+import { Input } from '@mui/material';
+import "./signup.css";
+import { RegisterContext } from '../../context/registercontext';
+import { NavigationContext } from 'react-router/dist/lib/context';
+
 
 export const SignUp = () => {
+    const {error,setError} = useContext(RegisterContext)
     const navigate = useNavigate();
  
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('');
  
-    const onSubmit = async (e) => {
-        createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          // Signed in 
-          const user = userCredential.user;
-          // ...
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          // ..
-        });
-        
+    const {handleSignUp} = useContext(RegisterContext)
    
     }
  
   return (
-            <div>
+            <div id="pageSignUp">
                 <div class="registerform">                  
                     <h1> Créez votre compte </h1>                                                                            
-                    <form onSubmit={onSubmit}>                                                                                            
+                    <form onSubmit={handleSignUp}>                                                                                            
                         <div class="inputdiv">
                             <label htmlFor="email-address">
-                                Email address
+                                Adresse email
                             </label>
-                            <TextField class="input"
+                            <Input class="input"
                                 type="email"
                                 label="Email address"
-                                value={email}
+                                name="email"
                                 onChange={(e) => setEmail(e.target.value)}  
                                 required                                    
                                 placeholder="Email address"                                
@@ -50,16 +43,21 @@ export const SignUp = () => {
                             <label htmlFor="password">
                                 Password
                             </label>
-                            <TextField class="input"
+                            <Input class="input"
                                 type="password"
                                 label="Create password"
-                                value={password}
+                                name="password"
                                 onChange={(e) => setPassword(e.target.value)} 
                                 required                                 
                                 placeholder="Password"              
                             />
                         </div>                                             
-                        
+                        {error.show &&(
+                            <div class="error">
+                                <p> {error.message} </p>
+                            </div>
+                        )
+                        }
                         <button
                             type="submit" 
                         >

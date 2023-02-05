@@ -11,12 +11,14 @@ import { TaskContext } from '../../context/taskcontext';
 import CreateTaskModal from '../../composants/modal/task/create';
 import EditModalTask from '../../composants/modal/task/edit';
 import {ModalContext} from '../../context/modalcontext';
+import "./home.css"
 function TabPanel(props) {
 
   const { children, value, index, ...other } = props;
 
   return (
     <div
+    className="global"
       role="tabpanel"
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}

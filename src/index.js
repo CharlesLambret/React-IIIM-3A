@@ -11,7 +11,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import "./index.css";
-import { SignUp } from "./composants/modal/register/signup";
+import { SignUp } from "./routes/signup/signup";
 import LandingPage from "./routes/landingpage/landingpage";
 import { ModalContextProvider } from "./context/modalcontext";
 import { SignIn } from "./composants/modal/register/signin";
@@ -32,14 +32,6 @@ const router = createBrowserRouter([
     path: "/signup",
     element: <SignUp/>
   },
-  {
-    path: "/signin",
-    element: <SignIn/>
-  },
-  {
-    path: "/window",
-    element: <WindowWidth/>
-  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

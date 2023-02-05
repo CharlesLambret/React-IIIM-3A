@@ -12,7 +12,26 @@ export function RegisterStateProvider(props){
     const [showSignInModal, setShowSignInModal] = useState(false);
     const [showSignUpModal, setShowSignUpModal] = useState(false);
     const [showLogOutModal, setShowLogOutModal] = useState(false);
-    
+    const [error, setError] = useState([
+      {
+        origin : "register",
+        message : "Wrong combination of email and password",
+        show : false
+      },
+    ])
+    const handleSignUp = async (e) => {
+      CreateUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        navigate("/kanban")
+        const user = userCredential.user;
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setError(error.origin="register", error.show="true");               
+        // ..
+      });
     useEffect(()=>{
       onAuthStateChanged(auth, (user) => {
           if (user) {
@@ -44,7 +63,12 @@ export function RegisterStateProvider(props){
            showLogOutModal,
            setShowLogOutModal,
            errorMessage, 
-           setErrorMessage
+           setErrorMessage,
+           error,
+            setError,
+            handleSignUp,
+            
+
           }}
         >
           {props.children}

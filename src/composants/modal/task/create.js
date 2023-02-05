@@ -1,61 +1,62 @@
-import { Button, TextField , FormControl, MenuItem } from '@mui/material';
-import {useContext} from 'react';
-import { TaskContext } from '../../../context/taskcontext';
-import { db } from '../../../firebase';
-import { collection, addDoc } from "firebase/firestore";
-import { ModalContext } from '../../../context/modalcontext';
-import "./taskcrud.css" 
-import DescriptionInput from './inputs/description';
-import TitleInput from './inputs/title';
-import EndDateInput from './inputs/enddate';
-import StartDateInput from './inputs/startdate';
-import StatusInput from './inputs/status';
-import { doc, setDoc } from "firebase/firestore";  
+import { TaskContext } from "../../../context/taskcontext"
+import {useContext } from "react";
+import { Button } from "@mui/material";
+import { ModalContext } from "../../../context/modalcontext";
+import "./taskcrud.css"
 
-export default function CreateTaskModal () {
-    const {title, setTitle, description, setDescription,  startDate, setStartDate, endDate, setEndDate, status, setStatus} = useContext(TaskContext)
-    const {modalState, setModalState} = useContext(ModalContext);
+export default function EditModalTask () {
 
-    async function posttask(e) {
-      e.preventDefault();
-      await addDoc(doc(db, 'tasksdata'), {
-          title: {title},
-          description : {description},
-          startDate : {startDate},
-          endDate: {endDate},
-          status: {status}, 
-      }); 
-  };
-  const handleCloseCreateTaskModal = () => {
-    setModalState({ ...modalState, CreateTaskModal: false });
-  };
+
+  const {title, setTitle, description, setDescription,  startDate, setStartDate, endDate, setEndDate, status, setStatus} = useContext(TaskContext)
+  const {modalState, setModalState} = useContext(ModalContext);
     
+  const handleClose  = () => {
+    setModalState({ ...modalState, CreateModalState: false });
+  };
+
     return(
-        <div className="modal-background">
-          <FormControl onSubmit={posttask} className="modal-FormControl">
-            
-            <TitleInput onChange = {(e) => setTitle(e.target.value)}/>
-            <DescriptionInput onChange = {(e) => setDescription(e.target.value)}/>
-          
-          
-            
-            
-            <StartDateInput onChange = {(e) => setStartDate(e.target.value)}/>
-          
-          
-            <EndDateInput onChange = {(e) => setEndDate(e.target.value)}/>
-            <StatusInput onChange = {(e) => setStatus(e.target.value)}/>
-            <div class="buttonrow">
-            <Button id="AddtaskButton" variant="contained" value="submit" type="submit">Ajouter</Button>
-            <Button
-              type="button"
-              onClick={handleCloseCreateTaskModal}
-            >
-              Annuler
-            </Button>
-            </div>
-            
-          </FormControl>
-        </div>
-    );
+          <div className="modal-background">
+            <form onSubmit={handleSubmit}>
+              <label htmlFor="title">Titre :</label>
+              <input
+                type="text"
+                name="title"
+                onChange={(e) => setTitle(e.target.value)}
+              />
+        
+              <label htmlFor="description">Description :</label>
+              <textarea
+                name="description"
+                onChange={(e) => setDescription(e.target.value)}
+              />
+        
+              <label htmlFor="startDate">Date de début :</label>
+              <input
+                type="date"
+                name="startDate"
+                onChange={(e) => setStartDate(e.target.value)}
+              />
+        
+              <label htmlFor="end-date">Date de fin :</label>
+              <input
+                type="date"
+                name="endDate"
+                onChange={(e) => setEndDate(e.target.value)}
+              />
+        
+              <label htmlFor="status">Statut :</label>
+              <select
+                name="status"
+                onChange={(e) => setStatus(e.target.value)}
+              >
+                <option value="non démarré">non démarré</option>
+                <option value="en cours">en cours</option>
+                <option value="recettage">recettage</option>
+                <option value="terminé">terminé</option>
+              </select>
+              <Button variant="contained" value="submit" type="submit">Modifier</Button>
+              <Button variant="text" onClick={handleClose}>Annuler</Button>
+            </form>
+          </div>
+    )
 }

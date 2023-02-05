@@ -3,7 +3,7 @@ import {  SignInMethod, signInWithEmailAndPassword, signInWithRedirect, GoogleAu
 import { auth } from '../../../firebase';
 import { NavLink, useNavigate } from 'react-router-dom'
 import { ModalContext } from '../../../context/modalcontext';
-import { Modal, TextField } from '@mui/material';
+import { Modal, Input } from '@mui/material';
 import { Button } from '@mui/material';
 import "./register.css";
 
@@ -65,7 +65,7 @@ export const SignIn = () => {
                                 <label htmlFor="email-address">
                                     Email address
                                 </label>
-                                <TextField class="input"
+                                <Input class="input"
                                     id="email-address"
                                     name="email"
                                     type="email"                                    
@@ -79,7 +79,7 @@ export const SignIn = () => {
                                 <label htmlFor="password">
                                     Password
                                 </label>
-                                <TextField class="input"
+                                <Input class="input"
                                     id="password"
                                     name="password"
                                     type="password"                                    

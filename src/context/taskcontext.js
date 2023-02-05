@@ -64,7 +64,7 @@ export function Taskdata(props){
     setTasks(tasks.filter((task) => task.id !== taskId));
   };
 
-  const startEditTask = (taskId) => {
+  const startEditTask = ({task}) => {
     
     const task = tasks.find((task) => task.id === taskId);
     setEditingTask(task);
@@ -72,7 +72,7 @@ export function Taskdata(props){
     console.log(task.title)
   };
 
-  async function handleUpdateTask (task)  {
+  async function handleUpdateTask ({task})  {
     updateDoc(doc(db, 'tasksdata', task.id), {
       title : task.title,
       description : task.description,
@@ -100,8 +100,6 @@ export function Taskdata(props){
         startEditTask,
         handleDeleteTask,
         handleUpdateTask,
-        showCreateModal, 
-        setShowCreateModal,
         editingTask, 
         setEditingTask,
         title, 
