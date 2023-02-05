@@ -8,7 +8,7 @@ import { useContext } from "react";
 
 export const TaskContext = createContext();
 
-export function Taskdata(props){
+export function TaskContextProvider(props){
   async function getTasks() {
    
     const TasksCollection = collection(db, 'tasksdata');
@@ -64,12 +64,12 @@ export function Taskdata(props){
     setTasks(tasks.filter((task) => task.id !== taskId));
   };
 
-  const startEditTask = ({task}) => {
+  const startEditTask = (taskId) => {
     
-    const task = tasks.find((task) => task.id === taskId);
-    setEditingTask(task);
+    const tasktoedit = tasks.find((task) => task.id === taskId);
+    setEditingTask(tasktoedit);
     setModalState.EditModalTask(true)
-    console.log(task.title)
+    console.log(tasktoedit.title)
   };
 
   async function handleUpdateTask ({task})  {

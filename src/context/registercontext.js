@@ -1,17 +1,20 @@
 import React, { useState } from "react";
 import { createContext } from "react";
 import { useEffect } from "react";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, user } from "../firebase";
+
 
 export const RegisterContext = createContext();
 
 export function RegisterStateProvider(props){
 
+    
     const [showLogOut, setShowLogOut] = useState(false);
     const [showSignInModal, setShowSignInModal] = useState(false);
     const [showSignUpModal, setShowSignUpModal] = useState(false);
     const [showLogOutModal, setShowLogOutModal] = useState(false);
+    const [errorMessage, setErrorMessage] = useState(false);
     const [error, setError] = useState([
       {
         origin : "register",
@@ -19,37 +22,23 @@ export function RegisterStateProvider(props){
         show : false
       },
     ])
-    const handleSignUp = async (e) => {
-      CreateUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        navigate("/kanban")
-        const user = userCredential.user;
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        setError(error.origin="register", error.show="true");               
-        // ..
-      });
+    
     useEffect(()=>{
       onAuthStateChanged(auth, (user) => {
           if (user) {
-            // User is signed in, see docs for a list of available properties
-            // https://firebase.google.com/docs/reference/js/firebase.User
             const uid = user.uid;
          
             // ...
             console.log("uid", uid)
             setShowLogOut(true)
-           
+            console.log("user is logged in")
           } else {
             setShowLogOut(false)
             console.log("user is logged out")          }
         });
     },[])
 
-    const [errorMessage, setErrorMessage] =useState(false);
+    
 
     return (
         <RegisterContext.Provider
@@ -65,13 +54,12 @@ export function RegisterStateProvider(props){
            errorMessage, 
            setErrorMessage,
            error,
-            setError,
-            handleSignUp,
-            
-
+           setError,
+         
           }}
         >
           {props.children}
         </RegisterContext.Provider>
       );
 }
+

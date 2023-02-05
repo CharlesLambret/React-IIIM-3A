@@ -4,17 +4,17 @@ import ErrorPage from "./routes/pageerreur";
 import WindowWidth from "./routes/windowidth";
 import Kanban from "./routes/accueil/home";
 import Navbar from "./composants/navbar/navbar";
-import { Taskdata } from './context/taskcontext';
+import { TaskContextProvider } from './context/taskcontext';
 import { RegisterStateProvider } from "./context/registercontext";
 import {
   createBrowserRouter,
+  Router,
   RouterProvider,
 } from "react-router-dom";
 import "./index.css";
 import { SignUp } from "./routes/signup/signup";
 import LandingPage from "./routes/landingpage/landingpage";
 import { ModalContextProvider } from "./context/modalcontext";
-import { SignIn } from "./composants/modal/register/signin";
 
 const router = createBrowserRouter([
   {
@@ -24,8 +24,8 @@ const router = createBrowserRouter([
   },
   {
     path: "/kanban",
-    element: <Kanban/>,
-    errorElement: <ErrorPage />,
+        element: <Kanban/>,
+        errorElement: <ErrorPage />,
     
   },
   {
@@ -36,14 +36,19 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <div>
-    <RegisterStateProvider>
-      <ModalContextProvider>
-      <Navbar/>
-      <Taskdata>
-        <RouterProvider router={router} />
-      </Taskdata>
-      </ModalContextProvider>
-    </RegisterStateProvider>
+      
+      
+      
+      <RegisterStateProvider>
+          <ModalContextProvider>
+            <TaskContextProvider>
+              <RouterProvider router={router}>
+                <Navbar/>
+              </RouterProvider>
+            </TaskContextProvider>
+          </ModalContextProvider>
+      </RegisterStateProvider>
+    
   </div>
   
 

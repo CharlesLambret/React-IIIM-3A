@@ -1,24 +1,33 @@
 import React, {useState, useContext} from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import {  CreateUserWithEmailAndPassword  } from 'firebase/auth';
+import {  createUserWithEmailAndPassword  } from 'firebase/auth';
 import {auth} from '../../firebase';
-import "./register.css";
 import { Input } from '@mui/material';
 import "./signup.css";
 import { RegisterContext } from '../../context/registercontext';
-import { NavigationContext } from 'react-router/dist/lib/context';
+
 
 
 export const SignUp = () => {
-    const {error,setError} = useContext(RegisterContext)
-    const navigate = useNavigate();
- 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('');
- 
-    const {handleSignUp} = useContext(RegisterContext)
-   
+    const handleSignUp = async (e) => {
+        createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          
+          const user = userCredential.user;
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setError(error.origin="register", error.show="true");               
+          // ..
+        });
     }
+    const { error,setError} = useContext(RegisterContext)
+   
+    
  
   return (
             <div id="pageSignUp">
