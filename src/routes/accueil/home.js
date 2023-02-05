@@ -20,7 +20,6 @@ function TabPanel(props) {
 
   return (
     <div
-    className="global"
       role="tabpanel"
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
