@@ -1,3 +1,7 @@
+body{
+  background-color: rgba(60, 55, 68);
+}
+
 .dashboard{
   display:flex;
   flex-direction:column;
@@ -5,6 +9,13 @@
   justify-content:center;
   align-content:center;
 }
+
+#tab{
+  background-color: rgba(150, 150, 150);
+  color: white;
+}
+
+
 .kanban-container{
   width:100%;
   display:flex;
@@ -49,4 +60,10 @@
 #bouton{
 
   background-color: rgba(134, 97, 193);
+}
+
+#bouton:hover{
+
+    background-color: rgba(48, 102, 190);
+
 }
