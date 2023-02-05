@@ -55,6 +55,7 @@ export const SignIn = () => {
  
     return(
         <>
+        
         <Modal open={modalState} onClose={() => setModalState(false)}>
                     <div class="registerform">                                            
                         <p> Login </p>                       
@@ -64,7 +65,7 @@ export const SignIn = () => {
                                 <label htmlFor="email-address">
                                     Email address
                                 </label>
-                                <TextField
+                                <TextField class="input"
                                     id="email-address"
                                     name="email"
                                     type="email"                                    
@@ -78,7 +79,7 @@ export const SignIn = () => {
                                 <label htmlFor="password">
                                     Password
                                 </label>
-                                <TextField
+                                <TextField class="input"
                                     id="password"
                                     name="password"
                                     type="password"                                    

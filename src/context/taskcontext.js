@@ -1,12 +1,25 @@
 import React, { useState } from "react";
 import { createContext } from "react";
 import { db } from "../firebase";
-import { collection, getDocs} from "firebase/firestore";
+import { collection, doc, getDocs, updateDoc} from "firebase/firestore";
 import { useEffect } from "react";
+import { ModalContext } from "./modalcontext";
+import { useContext } from "react";
 
 export const TaskContext = createContext();
 
 export function Taskdata(props){
+  async function getTasks() {
+   
+    const TasksCollection = collection(db, 'tasksdata');
+    const TasksSnapshot = await getDocs(TasksCollection);
+    const TasksList = TasksSnapshot.docs.map(doc => ({id:doc.id, ...doc.data()}));
+    setTasks (TasksList);
+  }
+    useEffect(getTasks, []);
+
+  const {modalState, setModalState} = useContext(ModalContext);
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [startDate, setStartDate] = useState("");
@@ -15,15 +28,7 @@ export function Taskdata(props){
 
   const [tasks, setTasks] = useState([]);
 
-  async function getTasks() {
-   
-    const TasksCol = collection(db, 'tasksdata');
-    const TasksSnapshot = await getDocs(TasksCol);
-    const TasksList = TasksSnapshot.docs.map(doc => ({id:doc.id, ...doc.data()}));
-    setTasks (TasksList);
-  }
-    useEffect(getTasks, []);
-
+ 
   //
   const [newTask, setNewTask] = useState({
     title: "",
@@ -32,46 +37,53 @@ export function Taskdata(props){
     endDate: "",
     status: "non démarré"
   });
+  const [editingTask, setEditingTask] = useState({});
 
   const handleInputChange = event => {
-    setEditingTask({
+    setTasks({
       ...newTask,
       [event.target.name]: event.target.value
     });
   };
   const handleInputChangeEdit = event => {
     setTasks({
-      ...tasks,
+      ...editingTask,
       [event.target.name]: event.target.value
     });
   };
   const handleSubmit = event => {
     event.preventDefault();
     setTasks([...tasks, { ...newTask, id: tasks.length + 1 }]);
-    setShowCreateModal(false);
+    setModalState(false);
     console.log(newTask.title);
   };
 
-  const [showCreateModal, setShowCreateModal] = useState(false);
-
-  const [editingTask, setEditingTask] = useState(null);
+  
   
   const handleDeleteTask = (taskId) => {
     setTasks(tasks.filter((task) => task.id !== taskId));
   };
 
-  const handleEditTask = (taskId) => {
+  const startEditTask = (taskId) => {
+    
     const task = tasks.find((task) => task.id === taskId);
     setEditingTask(task);
-    console.log(setEditingTask.title)
+    setModalState.EditModalTask(true)
+    console.log(task.title)
   };
 
-  const handleSaveTask = (editingTask) => {
-    setTasks(
-    [...tasks, {id : editingTask.id, title : editingTask.title, description : editingTask.description, startDate : editingTask.startDate, endDate : editingTask.endDate, status : editingTask.status}],
-    )
-    console.log(editingTask.title)
-    setEditingTask(null);
+  async function handleUpdateTask (task)  {
+    updateDoc(doc(db, 'tasksdata', task.id), {
+      title : task.title,
+      description : task.description,
+      startDate : task.startDate,
+      endDate : task.endDate,
+      status : task.status
+    }).then(() => {
+
+      setEditingTask(null);
+    })
+    
     };
     
 
@@ -85,9 +97,9 @@ export function Taskdata(props){
         handleInputChange,
         handleInputChangeEdit,
         handleSubmit,
-        handleEditTask,
+        startEditTask,
         handleDeleteTask,
-        handleSaveTask,
+        handleUpdateTask,
         showCreateModal, 
         setShowCreateModal,
         editingTask, 

@@ -8,7 +8,7 @@ import { useLocation } from "react-router";
 import "./task.css";
 
 export default function TaskCard( {task} ){
-    const {handleDeleteTask, handleEditTask, setEditingTask, TasksSnapshot, TasksCol, setTasks, getTasks, tasks} = useContext(TaskContext);
+    const {handleDeleteTask, startEditTask, setEditingTask, TasksSnapshot, TasksCol, setTasks, getTasks, tasks} = useContext(TaskContext);
     const location = useLocation();
    
     return (
@@ -21,7 +21,7 @@ export default function TaskCard( {task} ){
                 <div className="task-actions">
                   <Button className="TaskButton" onClick={() => handleDeleteTask(task.id)}>Delete</Button>
                   <Button className="TaskButton" onClick={() => {
-                                                                    handleEditTask(task.id);
+                                                                    startEditTask(task.id);
                                                         
                                                                 }}>Edit</Button>
 

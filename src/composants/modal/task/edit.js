@@ -14,22 +14,15 @@ export default function EditModalTask () {
 
 
     
-    const {handleSaveTask, editingTask, handleInputChangeEdit, setEditingTask } = useContext(TaskContext);
+    const {handleUpdateTask, editingTask, handleInputChangeEdit, setEditingTask } = useContext(TaskContext);
 
     return(
         <div className="modal-background">
-          <FormControl onSubmit={handleSaveTask} class="modal-form">
-            
+          <FormControl onSubmit={handleUpdateTask} class="modal-form">
             <TitleInput placeholder={editingTask.title} onChange={handleInputChangeEdit}
                  />
             <DescriptionInput placeholder={editingTask.description} onChange={handleInputChangeEdit}/>
-          
-          
-            
-            
             <StartDateInput onChange={handleInputChangeEdit}/>
-          
-          
             <EndDateInput onChange={handleInputChangeEdit} />
             <StatusInput onChange={handleInputChangeEdit} placeholder={editingTask.status}/>
             <div class="buttonrow">

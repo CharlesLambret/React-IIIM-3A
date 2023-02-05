@@ -1,4 +1,4 @@
-import { TextField, MenuItem } from "@mui/material"
+import { TextField , MenuItem } from "@mui/material"
 
 export default function StatusInput (){
     const statuschoices = [{
@@ -20,17 +20,20 @@ export default function StatusInput (){
     ]
     return(
         <>
-            <TextField
+            <TextField class="input"
                 name="status"
+                size="large"
+                label="Statut"
                 select
                 required
+                 
               >
                 {statuschoices.map((option) => (
                   <MenuItem key={option.value} value={option.value}>
                     {option.label}
                   </MenuItem>
                 ))}
-              </TextField>
+              </TextField >
             
         </>
     )

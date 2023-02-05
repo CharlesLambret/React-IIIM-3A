@@ -30,6 +30,8 @@ export function RegisterStateProvider(props){
         });
     },[])
 
+    const [errorMessage, setErrorMessage] =useState(false);
+
     return (
         <RegisterContext.Provider
           value={{
@@ -40,7 +42,9 @@ export function RegisterStateProvider(props){
            showSignUpModal,
            setShowSignUpModal,
            showLogOutModal,
-           setShowLogOutModal
+           setShowLogOutModal,
+           errorMessage, 
+           setErrorMessage
           }}
         >
           {props.children}

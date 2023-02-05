@@ -58,7 +58,7 @@ export default function Home() {
   };
 
   return (
-    <div>
+    <div className="dashboarddiv">
       <Button variant="contained" id="bouton1"  onClick={handleOpenCreateTaskModal}>Ajouter une tâche</Button>
       <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -69,9 +69,8 @@ export default function Home() {
       </Box>
       
       {modalState.CreateTaskModal && <CreateTaskModal />}
-     {editingTask !== null ? (
-        <EditModalTask/>
-      ): null}
+      {modalState.EditTaskModal && <EditModalTask />}
+      
       <TabPanel value={value} index={0}>
         <Kanban/>
       </TabPanel>

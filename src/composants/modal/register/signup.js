@@ -36,7 +36,7 @@ export const SignUp = () => {
                             <label htmlFor="email-address">
                                 Email address
                             </label>
-                            <TextField
+                            <TextField class="input"
                                 type="email"
                                 label="Email address"
                                 value={email}
@@ -50,7 +50,7 @@ export const SignUp = () => {
                             <label htmlFor="password">
                                 Password
                             </label>
-                            <TextField
+                            <TextField class="input"
                                 type="password"
                                 label="Create password"
                                 value={password}
