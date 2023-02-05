@@ -74,7 +74,7 @@ export default function Home() {
       {modalState.CreateTaskModal && <CreateTaskModal />}
       {modalState.EditTaskModal && <EditModalTask />}
       {modalState.signInModal && <SignIn/> }
-      {modalState.LogOutModal && <LogOut/>} }
+      {modalState.LogOutModal && <LogOut/>} 
       <TabPanel value={value} index={0}>
         <Kanban/>
       </TabPanel>
