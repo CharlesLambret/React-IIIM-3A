@@ -6,15 +6,15 @@ import { collection, addDoc } from "firebase/firestore";
 import { ModalContext } from '../../../context/modalcontext';
 
 export default function CreateTaskModal () {
-    const {TaskCollection, title, setTitle, description, setDescription,  startDate, setStartDate, endDate, setEndDate, status, setStatus} = useContext(TaskContext)
-    const {setShowCreateModal} = useContext(ModalContext);
+    const {TasksCollection, newTitle, description, setDescription,  startDate, setStartDate, endDate, setEndDate, status, setStatus} = useContext(TaskContext)
+    const {modalState, setModalState,  setShowCreateModal} = useContext(ModalContext);
 
-    const posttask = (e) => addDoc(TaskCollection, {
-      title: setTitle ,
-      description: setDescription,
-      startDate: setStartDate,
-      endDate: setEndDate,
-      status: setStatus
+    const posttask = (e) => addDoc(collection(db, 'tasksdatas'), {
+      title : newTitle,
+      description: description,
+      startDate: startDate,
+      endDate: endDate,
+      status: status
     }); 
     return(
         <div className="modal-background">
@@ -24,7 +24,7 @@ export default function CreateTaskModal () {
               <input
                 type="text"
                 name="title"
-                onChange = {(e) => setTitle(e.target.value)}
+                onChange = {(e) => newTitle(e.target.value)}
                 required
               />
             </label>
@@ -73,7 +73,7 @@ export default function CreateTaskModal () {
             <Button id="AddtaskButton" variant="contained" type="submit">Ajouter</Button>
             <Button
               type="button"
-              onClick={() => setShowCreateModal(false)}
+              onClick={() => setModalState.CreateTaskModal = false}
             >
               Annuler
             </Button>
