@@ -15,6 +15,10 @@
     display:flex;
     justify-content:center;
     overflow-x:scroll;
+    color: #19274E;
+    font-weight: 500;
+    font-family: 'Roboto','Segoe UI';
+    font-size: 18px;
   }
   .modal-form{
     display:flex;
@@ -27,13 +31,19 @@
     z-input:999;
     position:fixed;
   }
+  
   .modal-form input, .modal-form select{
     margin-top:1%;
     margin-left:20px;
-    border-radius:15px;
     margin-bottom:1.5%;
+    height: 30px;
+    border: 2px solid #0C9EC0;
+    border-radius: 5px;
   }
   .buttonrow{
     display:flex;flex-direction:row;align-items:center;justify-content:space-between;margin-top:1%;
 
   }
+  
+
+

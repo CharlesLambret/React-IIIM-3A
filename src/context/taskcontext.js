@@ -51,7 +51,7 @@ export function TaskContextProvider(props){
       [event.target.name]: event.target.value
     });
   };
-  const handleSubmit = event => {
+  const handleNewSubmit = event => {
     event.preventDefault();
     setTasks([...tasks, { ...newTask, id: tasks.length + 1 }]);
     setModalState(false);
@@ -96,7 +96,7 @@ export function TaskContextProvider(props){
         setNewTask,
         handleInputChange,
         handleInputChangeEdit,
-        handleSubmit,
+        handleNewSubmit,
         startEditTask,
         handleDeleteTask,
         handleUpdateTask,

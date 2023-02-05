@@ -75,4 +75,4 @@ export function ModalContextProvider(props) {
       {props.children}
     </ModalContext.Provider>
   )
-}
+  }

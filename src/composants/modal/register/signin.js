@@ -3,12 +3,11 @@ import {  SignInMethod, signInWithEmailAndPassword, signInWithRedirect, GoogleAu
 import { auth } from '../../../firebase';
 import { NavLink, useNavigate } from 'react-router-dom'
 import { ModalContext } from '../../../context/modalcontext';
-import { Modal, Input } from '@mui/material';
+import { Modal } from '@mui/material';
 import { Button } from '@mui/material';
-import "./register.css";
 
 export const SignIn = () => {
-    const {signInModal, modalState, setModalState} = useContext(ModalContext)
+    const {modalState, setModalState} = useContext(ModalContext)
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -23,7 +22,6 @@ export const SignIn = () => {
           const token = credential.accessToken;
           // The signed-in user info.
           const user = result.user;
-          console.log(user.email)
           // ...
         }).catch((error) => {
           // Handle Errors here.
@@ -38,34 +36,36 @@ export const SignIn = () => {
     }
 
 
-    const onSignIn = (e) => {
+    const onLogin = (e) => {
+        e.preventDefault();
         signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                // Signed in 
-                const user = userCredential.user;
-                // ...
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-            });
-                
-                }
-    
+        .then((userCredential) => {
+            // Signed in
+            const user = userCredential.user;
+            navigate("/")
+            console.log(user);
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorCode, errorMessage)
+        });
+       
+    }
  
     return(
         <>
-        
-        <Modal open={signInModal} name="signIn" onClose={() => setModalState({ ...modalState, signInModal: false })}>
-                    <div class="registerform">                                            
-                        <p> Login </p>                       
+        {modalState.signInModal && (
+                    <Modal
+                    close={setModalState.signInModal(false)}>                                            
+                        <p> FocusApp </p>                       
                                                        
-                        <form onSubmit={onSignIn}>                                              
-                            <div class="inputdiv">
+                        <form>                                              
+                            <div>
                                 <label htmlFor="email-address">
                                     Email address
                                 </label>
-                                <Input class="input"
+                                <input
                                     id="email-address"
                                     name="email"
                                     type="email"                                    
@@ -75,11 +75,11 @@ export const SignIn = () => {
                                 />
                             </div>
 
-                            <div class="inputdiv">
+                            <div>
                                 <label htmlFor="password">
                                     Password
                                 </label>
-                                <Input class="input"
+                                <input
                                     id="password"
                                     name="password"
                                     type="password"                                    
@@ -89,8 +89,11 @@ export const SignIn = () => {
                                 />
                             </div>
                                                 
-                            <div class="inputdiv">
-                                <button type="submit">S'inscrire                                          
+                            <div>
+                                <button                                    
+                                    onClick={onLogin}                                        
+                                >      
+                                    Login                                                                  
                                 </button>
                             </div>                               
                         </form>
@@ -103,9 +106,10 @@ export const SignIn = () => {
                         </p>
                         
                                                    
-                    </div>
                     </Modal>
+               
+       
+    )}
 </>
 )
 }
-
