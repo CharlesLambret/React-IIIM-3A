@@ -1,18 +1,26 @@
 .navbar{
     width:90%;
     height:80px;
-    margin: 0 auto;
     display:flex;
     justify-content:space-between;
     align-items:center;
     font-family: 'Roboto','Segoe UI';
+    margin-left:5%;
+    padding:0.5%;
+    position:fixed;
+    width:100vw;
+    background-color: solid white;
     
 }
+nav {
+    
 
+}
 .menu{
     width: 30%;
     display: flex;
     justify-content: space-between;
+    background-color:white;
 }
 
 .menu span{

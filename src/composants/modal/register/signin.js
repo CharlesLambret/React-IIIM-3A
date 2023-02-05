@@ -36,7 +36,7 @@ export const SignIn = () => {
     }
 
 
-    const onLogin = (e) => {
+    const handleSignIn = (e) => {
         e.preventDefault();
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
@@ -57,8 +57,7 @@ export const SignIn = () => {
         <>
         {modalState.signInModal && (
                     <Modal
-                    close={setModalState.signInModal(false)}>                                            
-                        <p> FocusApp </p>                       
+                    close={setModalState.signInModal(false)}>                                                              
                                                        
                         <form>                                              
                             <div>
@@ -91,7 +90,7 @@ export const SignIn = () => {
                                                 
                             <div>
                                 <button                                    
-                                    onClick={onLogin}                                        
+                                    onClick={handleSignIn}                                        
                                 >      
                                     Login                                                                  
                                 </button>
