@@ -19,7 +19,7 @@ export default function CreateTaskModal () {
 
     const posttask = (e) => {
       e.preventDefault();
-      addDoc(collection(db, "Tâches"), {
+      addDoc(collection(db, 'tasksdata'), {
           title: title,
           description : description,
           startDate : startDate,
@@ -43,14 +43,16 @@ export default function CreateTaskModal () {
           
             <EndDateInput onChange = {(e) => setEndDate(e.target.value)}/>
             <StatusInput onChange = {(e) => setStatus(e.target.value)}/>
-            
+            <div class="buttonrow">
             <Button id="AddtaskButton" variant="contained" type="submit">Ajouter</Button>
             <Button
               type="button"
-              onClick={() => setShowCreateModal(false)}
+              onClick={() => setShowCreateModal(null)}
             >
               Annuler
             </Button>
+            </div>
+            
           </FormControl>
         </div>
     );

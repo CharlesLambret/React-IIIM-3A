@@ -10,7 +10,7 @@ import TaskTable from './views/table';
 import { TaskContext } from '../../context/taskcontext';
 import CreateTaskModal from '../../composants/modal/task/create';
 import EditModalTask from '../../composants/modal/task/edit';
-
+import {ModalContext} from '../../context/modalcontext';
 function TabPanel(props) {
 
   const { children, value, index, ...other } = props;
@@ -48,13 +48,18 @@ function a11yProps(index) {
 export default function Home() {
   const [value, setValue] = React.useState(0);
   const {showCreateModal, setShowCreateModal, editingTask} = useContext(TaskContext);
+  const {modalState, setModalState} = useContext(ModalContext);
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
+  };
+  const handleOpenCreateTaskModal = () => {
+    setModalState({ ...modalState, CreateTaskModal: true });
   };
 
   return (
     <div>
-      <Button variant="contained" id="bouton1" onClick={() => setShowCreateModal(true)}>Ajouter une tâche</Button>
+      <Button variant="contained" id="bouton1"  onClick={handleOpenCreateTaskModal}>Ajouter une tâche</Button>
       <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" id ="tab">
@@ -62,9 +67,8 @@ export default function Home() {
           <Tab  label="Tableau" {...a11yProps(1)} />
         </Tabs>
       </Box>
-      {showCreateModal && (
-        <CreateTaskModal/>
-      )}
+      
+      {modalState.CreateTaskModal && <CreateTaskModal />}
      {editingTask !== null ? (
         <EditModalTask/>
       ): null}

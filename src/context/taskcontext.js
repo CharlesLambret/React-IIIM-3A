@@ -17,7 +17,7 @@ export function Taskdata(props){
 
   async function getTasks() {
    
-    const TasksCol = collection(db, 'Tâches');
+    const TasksCol = collection(db, 'tasksdata');
     const TasksSnapshot = await getDocs(TasksCol);
     const TasksList = TasksSnapshot.docs.map(doc => ({id:doc.id, ...doc.data()}));
     setTasks (TasksList);

@@ -9,14 +9,36 @@ export function ModalContextProvider(props) {
     signUpModal: false,
     signInModal: false,
     LogOutModal: false,
+    CreateTaskModal: false,
+    EditTaskModal: false,
   })
 
   const toggleModals = modal => {
+    if(modal === "CreateTask") {
+      setModalState({
+        signUpModal: false,
+        signInModal: true,
+        LogOutModal: false,
+        CreateTaskModal: true,
+        EditTaskModal: false,
+      })
+    }
+    if(modal === "EditTask") {
+      setModalState({
+        signUpModal: false,
+        signInModal: true,
+        LogOutModal: false,
+        CreateTaskModal: false,
+        EditTaskModal: true,
+      })
+    }
     if(modal === "signIn") {
       setModalState({
         signUpModal: false,
         signInModal: true,
         LogOutModal: false,
+        CreateTaskModal: false,
+        EditTaskModal: false,
       })
     }
     if(modal === "signUp") {
@@ -24,6 +46,8 @@ export function ModalContextProvider(props) {
         signUpModal: true,
         signInModal: false,
         LogOutModal: false,
+        CreateTaskModal: false,
+        EditTaskModal: false,
       })
     }
     if(modal === "LogOut") {
@@ -31,6 +55,8 @@ export function ModalContextProvider(props) {
         signUpModal: false,
         signInModal: false,
         LogOutModal: true,
+        CreateTaskModal: false,
+        EditTaskModal: false,
       })
     }
     if(modal === "close") {
@@ -38,6 +64,8 @@ export function ModalContextProvider(props) {
         signUpModal: false,
         signInModal: false, 
         LogOutModal: false,
+        CreateTaskModal: false,
+        EditTaskModal: false,
       })
     }
   }

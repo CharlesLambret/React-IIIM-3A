@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function LandingPage (){
 
-    const kanban = require("../../Image/kanban.png") 
+    let IlluKanban = require("../../Image/kanban.jpg")
     let navigate = useNavigate();
     const handleClick = () => {
         navigate("/kanban")
@@ -19,7 +19,7 @@ export default function LandingPage (){
                         Cliquez sur le bouton "Découvrir" pour en savoir plus sur les fonctionnalités de ProPlanner.</p>
                     <Button variant="contained" id="bouton1" onClick={handleClick}>Découvrir</Button>
                 </div>
-                <img src={kanban} alt="Kanban"/>
+                <img src={IlluKanban} alt="Kanban"/>
             </div>
         </div>
 

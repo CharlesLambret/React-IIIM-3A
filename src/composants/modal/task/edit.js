@@ -15,7 +15,7 @@ export default function EditModalTask () {
 
     
     const {handleSaveTask, editingTask, handleInputChangeEdit, setEditingTask } = useContext(TaskContext);
-    
+
     return(
         <div className="modal-background">
           <FormControl onSubmit={handleSaveTask} class="modal-form">
@@ -32,7 +32,7 @@ export default function EditModalTask () {
           
             <EndDateInput onChange={handleInputChangeEdit} />
             <StatusInput onChange={handleInputChangeEdit} placeholder={editingTask.status}/>
-            
+            <div class="buttonrow">
             <Button id="AddtaskButton" variant="contained" type="submit">Ajouter</Button>
             <Button
               type="button"
@@ -40,6 +40,8 @@ export default function EditModalTask () {
             >
               Annuler
             </Button>
+            </div>
+            
           </FormControl>
           
         </div>
