@@ -11,6 +11,8 @@ import { TaskContext } from '../../context/taskcontext';
 import CreateTaskModal from '../../composants/modal/task/create';
 import EditModalTask from '../../composants/modal/task/edit';
 import {ModalContext} from '../../context/modalcontext';
+import { SignIn } from '../../composants/modal/register/signin';
+import { LogOut } from '../../composants/modal/register/logout';
 import "./home.css"
 function TabPanel(props) {
 
@@ -72,7 +74,8 @@ export default function Home() {
       
       {modalState.CreateTaskModal && <CreateTaskModal />}
       {modalState.EditTaskModal && <EditModalTask />}
-      
+      {modalState.signInModal && <SignIn/> }
+      {modalState.LogOutModal && <LogOut/>} }
       <TabPanel value={value} index={0}>
         <Kanban/>
       </TabPanel>

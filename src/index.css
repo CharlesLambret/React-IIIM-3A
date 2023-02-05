@@ -5,11 +5,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  width:100%;
+  width:100vw;
   max-width:100vw;
+  background-color: rgba(250,250,250,255); 
 }
+
 .global{
   max-width:100vw;
+  
   padding-top: 130px;
 }
 code {

@@ -8,7 +8,7 @@ import { Button } from '@mui/material';
 import "./register.css";
 
 export const SignIn = () => {
-    const {modalState, setModalState} = useContext(ModalContext)
+    const {signInModal, modalState, setModalState} = useContext(ModalContext)
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -40,23 +40,23 @@ export const SignIn = () => {
 
     const onSignIn = (e) => {
         signInWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user;
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });
-       
-    }
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+            });
+                
+                }
     
  
     return(
         <>
         
-        <Modal open={modalState} onClose={() => setModalState(false)}>
+        <Modal open={signInModal} name="signIn" onClose={() => setModalState({ ...modalState, signInModal: false })}>
                     <div class="registerform">                                            
                         <p> Login </p>                       
                                                        

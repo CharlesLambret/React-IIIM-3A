@@ -1,11 +1,12 @@
 .navbar{
-    width:100vw;
+    width:100%;
+    max-width:100vw;
     height:80px;
     display:flex;
     flex-direction:row;
     align-items:center;
     justify-content:flex-end;
-    padding:0 5%;
+    padding-right:10%;
     position:fixed;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     background: linear-gradient(rgba(248, 189, 127),rgba(245, 172, 114),rgba(242, 170, 126));
@@ -18,4 +19,7 @@
 #bouton{
     background-color: rgba(75, 82, 103);
    
+}
+.bouton-custom{
+    margin-right:1vw;
 }

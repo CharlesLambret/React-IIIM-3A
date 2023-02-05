@@ -11,6 +11,11 @@ import { RegisterContext } from '../../context/registercontext';
 export const SignUp = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('');
+    const {error,setError, showLogOut, setShowLogOut} = useContext(RegisterContext);
+
+    let navigate = useNavigate();
+    if (setShowLogOut(true)){ navigate('/kanban')};
+
     const handleSignUp = async (e) => {
         createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
@@ -25,12 +30,12 @@ export const SignUp = () => {
           // ..
         });
     }
-    const { error,setError} = useContext(RegisterContext)
+    
    
     
  
   return (
-            <div id="pageSignUp">
+            <div  class="global" id="pageSignUp">
                 <div class="registerform">                  
                     <h1> Créez votre compte </h1>                                                                            
                     <form onSubmit={handleSignUp}>                                                                                            

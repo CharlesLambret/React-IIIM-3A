@@ -30,7 +30,8 @@ const router = createBrowserRouter([
   },
   {
     path: "/signup",
-    element: <SignUp/>
+    element: <SignUp/>,
+    errorElement: <ErrorPage />,
   },
 ]);
 
@@ -40,10 +41,12 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       
       
       <RegisterStateProvider>
+        
           <ModalContextProvider>
+          <Navbar/>
             <TaskContextProvider>
               <RouterProvider router={router}>
-                <Navbar/>
+                
               </RouterProvider>
             </TaskContextProvider>
           </ModalContextProvider>
