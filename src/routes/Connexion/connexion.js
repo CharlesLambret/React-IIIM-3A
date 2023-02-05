@@ -1,5 +1,8 @@
 import "./connexion.css";
 
+
+const logo = require('../../Image/kanban.png');
+
 export default function Connexion() {
 
     const logo = require("../../Image/kanban.png");

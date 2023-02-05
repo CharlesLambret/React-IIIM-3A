@@ -7,6 +7,48 @@
     margin-top:4px;
     margin-bottom:4px;
 }
-.TaskButton{
-    z-index:1;
+
+.modal-form{
+    padding: 0;
+    margin: 0;
+    width: none;
 }
+.modal-background{
+    color: #19274E;
+    font-weight: 500;
+    font-family: 'Roboto','Segoe UI';
+    font-size: 18px;
+    width: 25vw;
+    height: 25vw;
+    padding: 0;
+    margin: 0;
+}
+
+.modal-form input, .modal-form select {
+    float: right;
+    margin-top: 1%;
+    height: 30px;
+    border: 2px solid #0C9EC0;
+    border-radius: 5px;
+    margin-bottom: 1.5%;
+}
+
+.TaskButton{
+    width: 100%;
+    margin-top: 20px;
+    background-color: #0C9EC0;
+    border: 2px solid #F5FDFF;
+    border-radius: 10px;
+    font-weight: bold;
+    color: #F5FDFF;
+    height: 50px;
+    box-shadow: inherit;
+    margin-bottom: 20px;
+}
+
+ .TaskButton:hover{
+    cursor: pointer;
+    background-color: #F5FDFF;
+    color: #0C9EC0;
+    border: 2px solid #0C9EC0;
+ }

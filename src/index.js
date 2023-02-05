@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 import ErrorPage from "./routes/pageerreur";
 import WindowWidth from "./routes/windowidth";
 import Kanban from "./routes/accueil/home";
-import Navbar from "./composants/navbar/navbar";
 import { TaskContextProvider } from './context/taskcontext';
 import { RegisterStateProvider } from "./context/registercontext";
 import {
@@ -50,7 +49,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <RegisterStateProvider>
         
           <ModalContextProvider>
-          <Navbar/>
+          
             <TaskContextProvider>
               <RouterProvider router={router}>
                 

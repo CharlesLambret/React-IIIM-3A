@@ -2,13 +2,15 @@ import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from
 import { TaskContext } from "../../../context/taskcontext"
 import { useContext } from "react";
 import {Paper} from "@mui/material"
+import "./kanban.css"
 
 export default function TaskTable(){
     const {tasks} = useContext(TaskContext);
 
     return (
         <div>
-            <TableContainer component={Paper}>
+          <h2>Liste des tâches</h2>
+            <TableContainer id="tablecontainer" component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>

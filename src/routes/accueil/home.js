@@ -14,6 +14,7 @@ import {ModalContext} from '../../context/modalcontext';
 import { SignIn } from '../../composants/modal/register/signin';
 import { LogOut } from '../../composants/modal/register/logout';
 import "./home.css"
+import Navbar from '../../composants/navbar/navbar';
 
 function TabPanel(props) {
 
@@ -57,12 +58,10 @@ export default function Home() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  const handleOpenCreateTaskModal = () => {
-    setModalState({ ...modalState, CreateTaskModal: true });
-  };
 
   return (
     <div className="dashboarddiv">
+      <Navbar/>
       <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" id ="tab">

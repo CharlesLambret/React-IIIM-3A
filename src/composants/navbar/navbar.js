@@ -6,18 +6,15 @@ import { auth } from "../../firebase";
 import {SignIn} from "../modal/register/signin";
 import {LogOut} from "../modal/register/logout";
 import { RegisterContext } from "../../context/registercontext";
-import {NavLink, Router} from "react-router-dom";
+import {NavLink, Router, useNavigate} from "react-router-dom";
 import {ModalContext} from "../../context/modalcontext";
 const logo = require("../../Image/kanban.png");
 
 export default function Navbar (){
-  
-  const { setShowLogOutModal, 
-    showLogOut, 
-    setShowLogOut} = useContext(RegisterContext)
-
+  let navigate = useNavigate();
+  const { setShowLogOutModal, showLogOut, setShowLogOut} = useContext(RegisterContext)
   const {modalState, setModalState} = useContext(ModalContext)
-    
+  const NavigateSignUp = () => {navigate("signup")}
  const ShowLoginModal = () => { setModalState({signInModal: true}) }
 
   return (
@@ -26,12 +23,11 @@ export default function Navbar (){
         {showLogOut === false &&  (
           <>
           
-          
+          <Button class="bouton-custom" onClick={NavigateSignUp}>Inscription</Button>
          
          
-           <Button variant="contained" id="bouton" >
-              Connexion
-            </Button>
+          <Button variant="contained" class="bouton-custom" onClick={ShowLoginModal}>Connexion</Button>
+
            </>
             
         )

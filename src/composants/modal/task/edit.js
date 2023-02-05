@@ -7,16 +7,17 @@ import "./taskcrud.css"
 export default function EditModalTask () {
 
 
-  const {title, setTitle, description, setDescription,  startDate, setStartDate, endDate, setEndDate, status, setStatus} = useContext(TaskContext)
+  const {title, setTitle, description, setDescription,  startDate, setStartDate, endDate, setEndDate, status, setStatus, handleNewSubmit} = useContext(TaskContext)
   const {modalState, setModalState} = useContext(ModalContext);
-    
+  
   const handleClose  = () => {
     setModalState({ ...modalState, EditModalTask: false });
+    console.log("Modal fermée")
   };
 
     return(
           <div className="modal-background">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleNewSubmit}>
               <label htmlFor="title">Titre :</label>
               <input
                 type="text"

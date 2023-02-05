@@ -4,6 +4,7 @@ import { TaskContext } from "../../../context/taskcontext"
 import { useContext } from "react"
 import "./kanban.css"
 import { blueGrey } from '@mui/material/colors';
+import OpenTaskCreateButton from "../../../composants/buttons/opencreatetask"
 
 const plus = require('../../../Image/plus.png')
 const tab = blueGrey[200];
@@ -11,7 +12,7 @@ const tab = blueGrey[200];
 export default function Kanban({task}){
     const {showCreateModal, setShowCreateModal} = useContext(ModalContext)
     const {tasks, editingTask} = useContext(TaskContext)
-
+    
     return(
     <div className="dashboard">
       <h2>Kanban des tâches</h2>
@@ -22,7 +23,7 @@ export default function Kanban({task}){
 <div className='box'  >
   <div className='flex'>
     <h3>Non démarré</h3> 
-    <img src={plus} alt="" className='img-add'/>
+    <OpenTaskCreateButton/>
   </div>
   
   <div className="kanban-column" id='non-demarrer'>
@@ -37,7 +38,7 @@ export default function Kanban({task}){
 <div className='box'>
   <div className='flex'>
       <h3>En cours</h3>
-    <img src={plus} alt="" className='img-add'/>
+    <OpenTaskCreateButton/>
 
    </div>
   <div className="kanban-column" id='en-cours'>
@@ -52,7 +53,7 @@ export default function Kanban({task}){
 <div className='box'>
   <div className='flex'>
     <h3>Recettage</h3>
-    <img src={plus} alt="" className='img-add'/>
+    <OpenTaskCreateButton/>
 
   </div>
   <div className="kanban-column" id='recettage'>
@@ -68,7 +69,7 @@ export default function Kanban({task}){
 <div className='box'>
   <div className='flex'>
     <h3>Terminé</h3>
-    <img src={plus} alt="" className='img-add'/>
+    <OpenTaskCreateButton/>
 
   </div>
   <div className="kanban-column" id='terminer'>

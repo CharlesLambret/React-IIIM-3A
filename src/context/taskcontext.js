@@ -9,9 +9,10 @@ import { useContext } from "react";
 export const TaskContext = createContext();
 
 export function TaskContextProvider(props){
+  const TasksCollection = collection(db, 'tasksdata');
   async function getTasks() {
    
-    const TasksCollection = collection(db, 'tasksdata');
+    
     const TasksSnapshot = await getDocs(TasksCollection);
     const TasksList = TasksSnapshot.docs.map(doc => ({id:doc.id, ...doc.data()}));
     setTasks (TasksList);
@@ -51,7 +52,7 @@ export function TaskContextProvider(props){
       [event.target.name]: event.target.value
     });
   };
-  const handleSubmit = event => {
+  const handleNewSubmit = event => {
     event.preventDefault();
     setTasks([...tasks, { ...newTask, id: tasks.length + 1 }]);
     setModalState(false);
@@ -61,8 +62,12 @@ export function TaskContextProvider(props){
   
   
   const handleDeleteTask = (taskId) => {
-    setTasks(tasks.filter((task) => task.id !== taskId));
-  };
+    const taskRef = TasksCollection.doc(taskId);
+    taskRef.delete();
+};
+    
+ 
+
 
   const startEditTask = (taskId) => {
     
@@ -87,16 +92,17 @@ export function TaskContextProvider(props){
     };
     
 
-  return (
+  return(
     <TaskContext.Provider
       value={{
+        TasksCollection,
         tasks, 
         setTasks,
         newTask, 
         setNewTask,
         handleInputChange,
         handleInputChangeEdit,
-        handleSubmit,
+        handleNewSubmit,
         startEditTask,
         handleDeleteTask,
         handleUpdateTask,
