@@ -1,0 +1,59 @@
+.navbar{
+    width:90%;
+    height:80px;
+    margin: 0 auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-family: 'Roboto','Segoe UI';
+    
+}
+
+.menu{
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu span{
+    color: #19274E;
+    font-weight: 400;
+}
+
+.menu span:first-child{
+    font-weight: bold;
+}
+
+.logo{
+    font-weight: bold;
+    color: #0C9EC0;
+    font-size: 1.5em;
+    display: flex;
+    align-items: center;
+    height: 80px;
+}
+
+.logo img{
+    width: 32px;
+    height: 32px;
+    margin-top: 0;
+    margin-right: 10px ;
+    
+}
+#bouton{
+    cursor: pointer;
+    background-color: #F5FDFF;
+    border: 2px solid #0C9EC0;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #0C9EC0;
+    height: 50px;
+    box-shadow: inherit;
+}
+
+#bouton:hover{
+    cursor: pointer;
+    background-color: #0C9EC0;
+    border: 2px solid #F5FDFF;
+    color: #F5FDFF;
+ }
