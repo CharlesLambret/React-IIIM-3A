@@ -5,34 +5,52 @@ import {auth} from '../../firebase';
 import { Input } from '@mui/material';
 import "./signup.css";
 import { RegisterContext } from '../../context/registercontext';
-
+import {Button} from '@mui/material';
 
 
 export const SignUp = () => {
+
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('');
-    const {error,setError, showLogOut, setShowLogOut} = useContext(RegisterContext);
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const {errorMessage,setErrorMessage, showLogOut, setShowLogOut} = useContext(RegisterContext);
 
+    const validatePassword = () => {
+        let isValid = true
+        if (password !== '' && confirmPassword !== ''){
+          if (password !== confirmPassword) {
+            isValid = false
+            setErrorMessage('Passwords does not match')
+          }
+        }
+        return isValid
+      }
     let navigate = useNavigate();
-    if (setShowLogOut(true)){ navigate('/kanban')};
-
-    const handleSignUp = async (e) => {
-        createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          setShowLogOut(true);
-          const user = userCredential.user;
-          // ...
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          setError(error.origin="register", error.show="true");    
-          console.log(errorMessage);           
-          // ..
-        });
-        
-          
-    }
+    const handleSignUp = e => {
+        e.preventDefault()
+        setErrorMessage('')
+        if(validatePassword()) {
+          // Create a new user with email and password using firebase
+            createUserWithEmailAndPassword(auth, email, password)
+            .then((res) => {
+                setShowLogOut(true);
+                const user = res.user;
+                console.log(res.user)
+                navigate("/home")
+              })
+            .catch((error) => 
+                {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode)
+                console.log(errorMessage)}
+                
+                )
+        }
+        setEmail('')
+        setPassword('')
+        setConfirmPassword('')
+      }
     
    
     
@@ -69,19 +87,27 @@ export const SignUp = () => {
                                 required                                 
                                 placeholder="Password"              
                             />
-                        </div>                                             
-                        {error.show &&(
+                        </div>    
+                        <div class="inputdiv">
+                            <label htmlFor="passwordconfirmation">  
+                                Password confirmation
+                            </label>
+                            <Input class="input"
+                                type="password"
+                                label="Confirm password"
+                                name="passwordconfirmation"
+                                onChange={(e) => setConfirmPassword(e.target.value)}
+                                required
+                                placeholder="Password confirmation"
+                            />
+                        </div>                                       
+                        {errorMessage !== '' &&(
                             <div class="error">
-                                <p> {error.message} </p>
+                                <p> {errorMessage} </p>
                             </div>
                         )
                         }
-                        <button
-                            type="submit" 
-                        >
-                            Sign up                                
-                        </button>
-                                                                     
+                        <Button type="submit" value="submit">Créer un compte</Button>                                                             
                     </form>
                                  
                 </div>

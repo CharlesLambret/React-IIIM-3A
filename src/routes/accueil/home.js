@@ -15,49 +15,12 @@ import { SignIn } from '../../composants/modal/register/signin';
 import { LogOut } from '../../composants/modal/register/logout';
 import "./home.css"
 import Navbar from '../../composants/navbar/navbar';
+import BasicTabs from './tabpanel';
 
-function TabPanel(props) {
-
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ p: 2 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired,
-};
-
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
-  };
-}
 
 export default function Home() {
-  const [value, setValue] = React.useState(0);
   const {showCreateModal, setShowCreateModal, editingTask} = useContext(TaskContext);
   const {modalState, setModalState} = useContext(ModalContext);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
 
   return (
     <div className="dashboarddiv">
@@ -66,21 +29,7 @@ export default function Home() {
       {modalState.EditTaskModal && <EditModalTask />}
       {modalState.signInModal && <SignIn/> }
       {modalState.LogOutModal && <LogOut/>} 
-      <Box sx={{ width: '100%' }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" id ="tab">
-          <Tab  label="Kanban" {...a11yProps(0)} />
-          <Tab  label="Tableau" {...a11yProps(1)} />
-        </Tabs>
-      </Box>
-      <TabPanel value={value} index={0}>
-        <Kanban/>
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        <TaskTable/>
-      </TabPanel>
-    </Box>
-    
+      <BasicTabs/>
     </div>
     
   );

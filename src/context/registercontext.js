@@ -14,20 +14,13 @@ export function RegisterStateProvider(props){
     const [showSignInModal, setShowSignInModal] = useState(false);
     const [showSignUpModal, setShowSignUpModal] = useState(false);
     const [showLogOutModal, setShowLogOutModal] = useState(false);
-    const [errorMessage, setErrorMessage] = useState(false);
-    const [error, setError] = useState([
-      {
-        origin : "register",
-        message : "Wrong combination of email and password",
-        show : false
-      },
-    ])
+    const [errorMessage, setErrorMessage] = useState('');
     
     useEffect(()=>{
       onAuthStateChanged(auth, (user) => {
           if (user) {
             const uid = user.uid;
-         
+            
             // ...
             console.log("uid", uid)
             setShowLogOut(true)
@@ -53,8 +46,6 @@ export function RegisterStateProvider(props){
            setShowLogOutModal,
            errorMessage, 
            setErrorMessage,
-           error,
-           setError,
          
           }}
         >
