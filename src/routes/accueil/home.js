@@ -17,7 +17,6 @@ import "./home.css"
 import Navbar from '../../composants/navbar/navbar';
 
 function TabPanel(props) {
-
   const { children, value, index, ...other } = props;
 
   return (
@@ -29,7 +28,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 2 }}>
+        <Box sx={{ p: 3 }}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -50,15 +49,13 @@ function a11yProps(index) {
   };
 }
 
+
 export default function Home() {
   const [value, setValue] = React.useState(0);
-  const {showCreateModal, setShowCreateModal, editingTask} = useContext(TaskContext);
-  const {modalState, setModalState} = useContext(ModalContext);
-
+  const {modalState, setModalState} = useContext(ModalContext)
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
   return (
     <div className="dashboarddiv">
       <Navbar/>
@@ -66,6 +63,7 @@ export default function Home() {
       {modalState.EditTaskModal && <EditModalTask />}
       {modalState.signInModal && <SignIn/> }
       {modalState.LogOutModal && <LogOut/>} 
+      <div className="Tabs">
       <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" id ="tab">
@@ -80,6 +78,8 @@ export default function Home() {
         <TaskTable/>
       </TabPanel>
     </Box>
+      </div>
+      
     
     </div>
     
