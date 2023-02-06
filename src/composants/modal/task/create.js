@@ -7,7 +7,7 @@ import { ModalContext } from '../../../context/modalcontext';
 
 export default function CreateTaskModal () {
     const {TasksCollection, newTitle, description, setDescription,  startDate, setStartDate, endDate, setEndDate, status, setStatus} = useContext(TaskContext)
-    const {modalState, setModalState,  setShowCreateModal} = useContext(ModalContext);
+    const {modalState, setModalState} = useContext(ModalContext);
 
     const posttask = (e) => addDoc(collection(db, 'tasksdatas'), {
       title : newTitle,
@@ -16,6 +16,11 @@ export default function CreateTaskModal () {
       endDate: endDate,
       status: status
     }); 
+    
+   
+      const handleCloseCreateTaskModal = () => {
+        setModalState({ ...modalState, CreateTaskModal: false });
+      };
     return(
         <div className="modal-background">
           <form onSubmit={posttask} className="modal-form">
@@ -73,7 +78,7 @@ export default function CreateTaskModal () {
             <Button id="AddtaskButton" variant="contained" type="submit">Ajouter</Button>
             <Button
               type="button"
-              onClick={() => setModalState.CreateTaskModal = false}
+              onClick={handleCloseCreateTaskModal}
             >
               Annuler
             </Button>
