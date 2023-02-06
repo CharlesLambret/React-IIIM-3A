@@ -20,21 +20,24 @@ export default function Navbar (){
 
   return (
     <nav className="navbar" id="top">
-       <div className="logo"><img src={logo} /> ProPlanner</div>
-       
+      <div className="navcontent">
+          <div className="logo"><img src={logo} /> ProPlanner</div>
+          
           <div id="buttons">
           {showLogOut === false ? (
             <>
-              <Button class="bouton-custom" onClick={NavigateSignUp}>Inscription</Button>
-              <Button variant="contained" class="bouton-custom" onClick={ShowLoginModal}>Connexion</Button>
+              <Button  onClick={NavigateSignUp}>Inscription</Button>
+              <Button variant="contained"  onClick={ShowLoginModal}>Connexion</Button>
             </>
           ) : (
-            <Button variant="contained"  class="bouton-custom" onClick={setShowLogOutModal}>
+            <Button variant="contained"   onClick={setShowLogOutModal}>
               Déconnexion
             </Button>
           )}
         
         </div>
+      </div>
+       
       </nav>
   );
 };

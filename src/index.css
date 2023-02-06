@@ -12,8 +12,6 @@ body {
 
 .global{
   max-width:100vw;
-  
-  padding-top: 130px;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
