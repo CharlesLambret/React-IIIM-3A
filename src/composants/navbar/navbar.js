@@ -14,21 +14,21 @@ export default function Navbar (){
   let navigate = useNavigate();
   const { setShowLogOutModal, showLogOut, setShowLogOut} = useContext(RegisterContext)
   const {modalState, setModalState} = useContext(ModalContext)
-  const NavigateSignUp = () => {navigate("signup")}
+  const NavigateSignUp = () => {navigate("/signup")}
  const ShowLoginModal = () => { setModalState({signInModal: true}) }
 
   return (
     <nav className="navbar" id="top">
        <div className="logo"><img src={logo} /> ProPlanner</div>
         {showLogOut === false &&  (
-          <>
+          <div id="loggedoutbuttons">
           
           <Button class="bouton-custom" onClick={NavigateSignUp}>Inscription</Button>
          
          
           <Button variant="contained" class="bouton-custom" onClick={ShowLoginModal}>Connexion</Button>
 
-           </>
+           </div>
             
         )
         }

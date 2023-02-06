@@ -5,7 +5,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { ModalContext } from '../../../context/modalcontext';
 import { Modal } from '@mui/material';
 import { Button } from '@mui/material';
-
+import "./register.css"
 export const SignIn = () => {
     const {modalState, setModalState} = useContext(ModalContext)
     const navigate = useNavigate();
@@ -42,24 +42,22 @@ export const SignIn = () => {
         .then((userCredential) => {
             // Signed in
             const user = userCredential.user;
-            navigate("/")
-            console.log(user);
+            navigate("/kanban")
+            console.log("user is logged in");
         })
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            console.log(errorCode, errorMessage)
+            console.log(errorMessage)
         });
        
     }
  
     return(
         <>
-        {modalState.signInModal && (
-                    <Modal
-                    close={setModalState.signInModal(false)}>                                                              
+                    <div className="modal-background">                                                              
                                                        
-                        <form>                                              
+                        <form className="modal-form">                                              
                             <div>
                                 <label htmlFor="email-address">
                                     Email address
@@ -105,10 +103,7 @@ export const SignIn = () => {
                         </p>
                         
                                                    
-                    </Modal>
-               
-       
-    )}
+                    </div>
 </>
 )
 }
