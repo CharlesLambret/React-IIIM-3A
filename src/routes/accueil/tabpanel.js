@@ -47,7 +47,7 @@ export default function BasicTabs() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
+  const ShowCreateTableButton = () => {}
   return (
     <Box variant="fullWidth" id ="TabBox" centered>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -60,7 +60,7 @@ export default function BasicTabs() {
       <TabPanel value={value} index={0} >
         <Kanban/>
       </TabPanel>
-      <TabPanel value={value} index={1}>
+      <TabPanel value={value} index={1} onClick={}>
         <TaskTable/>
       </TabPanel>
     </Box>
