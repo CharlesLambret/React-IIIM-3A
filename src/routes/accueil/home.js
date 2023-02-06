@@ -15,6 +15,7 @@ import { SignIn } from '../../composants/modal/register/signin';
 import { LogOut } from '../../composants/modal/register/logout';
 import "./home.css"
 import Navbar from '../../composants/navbar/navbar';
+import Footer from '../../composants/footer/footer';
 
 function TabPanel(props) {
 
@@ -84,7 +85,6 @@ export default function Home() {
         Item Three
       </TabPanel>
     </Box>
-    
     </div>
     
   );

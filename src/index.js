@@ -15,6 +15,7 @@ import { SignUp } from "./routes/signup/signup";
 import LandingPage from "./routes/landingpage/landingpage";
 import { ModalContextProvider } from "./context/modalcontext";
 import Connexion from "./routes/Connexion/connexion"
+import Footer from "./composants/footer/footer";
 
 const router = createBrowserRouter([
   {
@@ -57,6 +58,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             </TaskContextProvider>
           </ModalContextProvider>
       </RegisterStateProvider>
+      <Footer/>
     
   </div>
   
