@@ -21,26 +21,20 @@ export default function Navbar (){
   return (
     <nav className="navbar" id="top">
        <div className="logo"><img src={logo} /> ProPlanner</div>
-        {showLogOut === false &&  (
-          <div id="loggedoutbuttons">
-          
-          <Button class="bouton-custom" onClick={NavigateSignUp}>Inscription</Button>
-         
-         
-          <Button variant="contained" class="bouton-custom" onClick={ShowLoginModal}>Connexion</Button>
-
-           </div>
-            
-        )
-        }
-        {setShowLogOut === true &&  (
-          <>
+       
+          <div id="buttons">
+          {showLogOut === false ? (
+            <>
+              <Button class="bouton-custom" onClick={NavigateSignUp}>Inscription</Button>
+              <Button variant="contained" class="bouton-custom" onClick={ShowLoginModal}>Connexion</Button>
+            </>
+          ) : (
             <Button variant="contained"  class="bouton-custom" onClick={setShowLogOutModal}>
               Déconnexion
             </Button>
-          </>
-        )
-        }
+          )}
+        
+        </div>
       </nav>
   );
 };
