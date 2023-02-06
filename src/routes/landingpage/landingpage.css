@@ -15,12 +15,10 @@
 margin-top: 15vh;
 }
 h1{
-    font-family: system-ui;
+    
     font-weight: 400;
 }
-p{
-    font-family: Georgia, serif;
-}
+
 
 
 .hero img{
@@ -177,14 +175,7 @@ footer li {
 
 
 }
-.hero{
-    width:100%;
-    display:flex;
-    flex-direction:row;
-    justify-content:space-evenly;
-    align-items:flex-start;
-    padding:2%;
-}
+
 .hero img{
     max-width:50%;
 }
@@ -197,12 +188,10 @@ footer li {
 margin-top: 15vh;
 }
 h1{
-    font-family: system-ui;
+    
     font-weight: 400;
 }
-p{
-    font-family: Georgia, serif;
-}
+
 
 
 .hero img{

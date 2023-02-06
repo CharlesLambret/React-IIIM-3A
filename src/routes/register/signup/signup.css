@@ -9,6 +9,13 @@
     width:70vw;
 
 }
+#gotosignin{
+    color:blue;
+}
+#gotosignin:hover{
+    text-decoration:underline;
+    cursor:pointer;
+}
 .registerform form {
     display:flex;
     flex-direction:column;

@@ -1,16 +1,22 @@
 import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from "@mui/material"
 import { TaskContext } from "../../../context/taskcontext"
 import { useContext } from "react";
+import { ModalContext } from "../../../context/modalcontext";
+import OpenTaskCreateButton from "../../../composants/buttons/opencreatetask"
 import {Paper} from "@mui/material"
 import "./kanban.css"
 
-export default function TaskTable(){
-    const {tasks} = useContext(TaskContext);
 
+export default function TaskTable(){
+    const {setisOnTableTab, isOnTableTab} = useContext(ModalContext)
+
+    const {tasks} = useContext(TaskContext);
+    
     return (
         <div>
           <h2>Liste des tâches</h2>
-            <TableContainer id="tablecontainer" component={Paper}>
+          <OpenTaskCreateButton/>
+        <TableContainer id="tablecontainer" component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
