@@ -2,22 +2,14 @@ import "./landingpage.css";
 import { Button } from "@mui/material"
 import { useNavigate } from "react-router";
 import Navbar from "../../composants/navbar/navbar";
-import { ModalContext } from "../../context/modalcontext";
-import { useContext } from "react";
-import { SignIn } from "../../composants/modal/register/signin";
-import { LogOut } from "../../composants/modal/register/logout";
-import { useEffect } from "react";
-import  DiscoverProductButton from "../../composants/buttons/discoverproduct";
+import Footer from "../../composants/footer/footer";
 
 export default function LandingPage (){
 
     const kanban = require("../../Image/work.jpg") 
     const entreprise = require("../../Image/Logo-TotalEnergies.png");
-    const logo = require("../../Image/kanban.png");
-    const chevron = require("../../Image/down-chevron.png");
-    const instagram = require("../../Image/instagram.png");
-    const youtube = require("../../Image/youtube.png");
-    const facebook = require("../../Image/facebook.png");
+    let navigate = useNavigate();
+    const NavigateKanban = () => { navigate("/kanban") }
 
     const {modalState} = useContext(ModalContext)
 
@@ -55,58 +47,6 @@ export default function LandingPage (){
                     <p>Adopter dès maintenant une solution efficace de gestion de projet.</p>
                     <DiscoverProductButton/>
             </div>
-            <footer>
-                <div id="logo">
-                    <div className="logo"><img src={logo} /> ProPlanner</div>
-                    <div id="reseaux">
-                        <span> <img src={instagram}/> </span>
-                        <span> <img src={youtube}/> </span>
-                        <span> <img src={facebook}/> </span>
-                    </div>
-                </div>
-
-                <div id='box1'>
-                <div id='box2'>
-                <div>
-                    <h3>Entreprise</h3>
-                    <ul>
-                        <li>Pourquoi ProPlanner ?</li>
-                        <li>A propos de ProPlanner ?</li>
-                        <li>On recrute ! </li>
-                    </ul>
-                </div>
-                <div>
-                    <h3>Ressource</h3>
-                    <ul>
-                        <li>Blog</li>
-                        <li>Glossaire</li>
-                        <li>Centre d'aide</li>
-                    </ul>
-                </div>
-
-                <div id="chevron">
-                  <a href="#top">  <img src={chevron} /></a>
-                </div>
-
-                </div> </div>
-               
-
-            
-            </footer>
-            <div id="white">
-            <div id='box3'>
-                    <p>© ProPlanner</p>
-
-                    <div>
-                        <p>Politique Données Personnelles</p>
-                        <p>Mentions légales</p>
-                        <p>Paramètres Cookies</p>
-                        <p>Langue: <b>Français</b> </p>
-                    </div>
-            </div>
-            </div>
         </div>
-        
-
     )
 }
