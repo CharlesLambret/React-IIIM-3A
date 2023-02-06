@@ -1,8 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import ReactDOM from "react-dom/client";
 import ErrorPage from "./routes/pageerreur";
-import WindowWidth from "./routes/windowidth";
-import Kanban from "./routes/accueil/home";
 import { TaskContextProvider } from './context/taskcontext';
 import { RegisterStateProvider } from "./context/registercontext";
 import {
@@ -11,13 +9,14 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import "./index.css";
-import { SignUp } from "./routes/signup/signup";
+import { SignUp } from "./routes/register/signup/signup";
 import LandingPage from "./routes/landingpage/landingpage";
 import { ModalContextProvider } from "./context/modalcontext";
-import Connexion from "./routes/Connexion/connexion"
 import Home from "./routes/accueil/home";
 
 const router = createBrowserRouter([
+  
+
   {
     path: "/",
     element: <LandingPage/>,
@@ -34,12 +33,6 @@ const router = createBrowserRouter([
     element: <SignUp/>,
     errorElement: <ErrorPage />,
   },
-  {
-    path: "/connexion",
-    element: <Connexion/>,
-    errorElement: <ErrorPage />
-
-  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -47,8 +40,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       
       
       
-      <RegisterStateProvider>
-        
+      <RegisterStateProvider >
           <ModalContextProvider>
           
             <TaskContextProvider>

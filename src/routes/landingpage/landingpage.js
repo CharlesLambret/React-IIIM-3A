@@ -6,6 +6,8 @@ import { ModalContext } from "../../context/modalcontext";
 import { useContext } from "react";
 import { SignIn } from "../../composants/modal/register/signin";
 import { LogOut } from "../../composants/modal/register/logout";
+import { useEffect } from "react";
+import  DiscoverProductButton from "../../composants/buttons/discoverproduct";
 
 export default function LandingPage (){
 
@@ -16,8 +18,7 @@ export default function LandingPage (){
     const instagram = require("../../Image/instagram.png");
     const youtube = require("../../Image/youtube.png");
     const facebook = require("../../Image/facebook.png");
-    let navigate = useNavigate();
-    const NavigateKanban = () => { navigate("/home") }
+
     const {modalState} = useContext(ModalContext)
 
 
@@ -33,7 +34,8 @@ export default function LandingPage (){
                     <h1>Organisez vos projets de manière efficace grâce à ProPlanner.</h1> 
                     <p> ProPlanner est une plateforme en ligne de <b>gestion de projet</b> qui aide à <b>visualiser et organiser les tâches </b>  de manière efficace.
                         Il propose <b>une vue d'ensemble</b> complète des projets sous forme de <b>kanban</b>  ou listepour une gestion plus productive.</p>
-                    <Button variant="contained" id="bouton1" onClick={NavigateKanban} >Découvrir</Button>
+                    <DiscoverProductButton/>
+                    
                 </div>
                 <img src={kanban} alt="Kanban" id="img-landing-page" />
             </div>
@@ -51,7 +53,7 @@ export default function LandingPage (){
             <div className="foot">
                     <h1>Vous voulez en savoir plus ?</h1>
                     <p>Adopter dès maintenant une solution efficace de gestion de projet.</p>
-                    <Button variant="contained" id="bouton1" onClick={NavigateKanban}>Découvrir</Button>
+                    <DiscoverProductButton/>
             </div>
             <footer>
                 <div id="logo">

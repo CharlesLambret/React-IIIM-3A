@@ -15,72 +15,20 @@ import { SignIn } from '../../composants/modal/register/signin';
 import { LogOut } from '../../composants/modal/register/logout';
 import "./home.css"
 import Navbar from '../../composants/navbar/navbar';
-
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired,
-};
-
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
-  };
-}
+import BasicTabs from './tabpanel';
+import ModalRender from '../../composants/modal/modalrender';
 
 
 export default function Home() {
-  const [value, setValue] = React.useState(0);
-  const {modalState, setModalState} = useContext(ModalContext)
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+  const {showCreateModal, setShowCreateModal, editingTask} = useContext(TaskContext);
+  const {modalState, setModalState} = useContext(ModalContext);
+
   return (
     <div className="dashboarddiv">
       <Navbar/>
-      {modalState.CreateTaskModal && <CreateTaskModal />}
-      {modalState.EditTaskModal && <EditModalTask />}
-      {modalState.signInModal && <SignIn/> }
-      {modalState.LogOutModal && <LogOut/>} 
-      <div className="Tabs">
-      <Box sx={{ width: '100%' }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" id ="tab">
-          <Tab  label="Kanban" {...a11yProps(0)} />
-          <Tab  label="Tableau" {...a11yProps(1)} />
-        </Tabs>
-      </Box>
-      <TabPanel value={value} index={0}>
-        <Kanban/>
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        <TaskTable/>
-      </TabPanel>
-    </Box>
-      </div>
-      
-    
+
+      <ModalRender/> 
+      <BasicTabs/>
     </div>
     
   );

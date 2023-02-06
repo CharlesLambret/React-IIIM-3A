@@ -11,6 +11,7 @@ export function ModalContextProvider(props) {
     LogOutModal: false,
     CreateTaskModal: false,
     EditTaskModal: false,
+    ProfileModal : false,
   })
 
   const toggleModals = modal => {
