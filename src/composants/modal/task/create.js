@@ -16,8 +16,6 @@ export default function CreateTaskModal () {
       endDate: endDate,
       status: status
     }); 
-    
-   
       const handleCloseCreateTaskModal = () => {
         setModalState({ ...modalState, CreateTaskModal: false });
       };
