@@ -60,7 +60,7 @@ export default function BasicTabs() {
       <TabPanel value={value} index={0} >
         <Kanban/>
       </TabPanel>
-      <TabPanel value={value} index={1} onClick={}>
+      <TabPanel value={value} index={1} >
         <TaskTable/>
       </TabPanel>
     </Box>

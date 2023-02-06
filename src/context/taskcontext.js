@@ -21,7 +21,7 @@ export function TaskContextProvider(props){
 
   const {modalState, setModalState} = useContext(ModalContext);
 
-  const [newTitle, setNewTitle] = useState("");
+  const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
@@ -73,8 +73,8 @@ export function TaskContextProvider(props){
         handleDeleteTask,
         editingTask, 
         setEditingTask,
-        newTitle, 
-        setNewTitle, 
+        title, 
+        setTitle,
         description,
         setDescription,
         startDate,

@@ -6,15 +6,15 @@ import { collection, addDoc } from "firebase/firestore";
 import { ModalContext } from '../../../context/modalcontext';
 
 export default function CreateTaskModal () {
-  const { newTitle, description, setDescription,  startDate, setStartDate, endDate, setEndDate, status, setStatus} = useContext(TaskContext)
+  const { title, setTitle, description, setDescription,  startDate, setStartDate, endDate, setEndDate, status, setStatus} = useContext(TaskContext)
     const {modalState, setModalState} = useContext(ModalContext);
 
-    const posttask = (e) => addDoc(collection(db, 'tasksdatas'), {
-      title : newTitle,
+    const posttask = (e) => addDoc(collection(db, 'tasksdata'), {
+      title : title,
       description: description,
       startDate: startDate,
       endDate: endDate,
-      status: status
+      status: status,
     }); 
     const handleCloseModal = () => { setModalState({CreateTaskModal: false}) }
     return(
@@ -26,7 +26,7 @@ export default function CreateTaskModal () {
               <input
                 type="text"
                 name="title"
-                onChange = {(e) => newTitle(e.target.value)}
+                onChange = {(e) => setTitle(e.target.value)}
                 required
               />
             </label>
@@ -62,14 +62,15 @@ export default function CreateTaskModal () {
               Statut :
               <select
                 name="status"
-              
+                defaultValue="non démarré"
+                value={status}
                 onChange = {(e) => setStatus(e.target.value)}
                 required
               >
-                <option value="non démarré">non démarré</option>
-                <option value="en cours">en cours</option>
-                <option value="recettage">recettage</option>
-                <option value="terminé">terminé</option>
+                <option value="non démarré">Non démarré</option>
+                <option value="en cours">En cours</option>
+                <option value="recettage">Recettage</option>
+                <option value="terminé">Terminé</option>
               </select>
             </label>
             <Button id="AddtaskButton" variant="contained" type="submit">Ajouter</Button>
