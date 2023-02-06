@@ -16,7 +16,7 @@ export default function EditModalTask () {
     console.log("Modal fermée")
   };
   async function handleUpdateTask ({task})  {
-    updateDoc(doc(db, 'tasksdata', task.id), {
+    updateDoc(doc(db, 'tasksdata'), {
       title : newTitle,
       description : description,
       startDate : startDate,
