@@ -21,6 +21,7 @@ export const SignIn = () => {
             const user = userCredential.user;
             navigate("/home")
             console.log("user is logged in");
+            setModalState({SignInModal: false})
         })
         .catch((error) => {
             const errorCode = error.code;
