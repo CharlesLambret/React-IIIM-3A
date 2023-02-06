@@ -16,6 +16,7 @@ import { LogOut } from '../../composants/modal/register/logout';
 import "./home.css"
 import Navbar from '../../composants/navbar/navbar';
 import BasicTabs from './tabpanel';
+import ModalRender from '../../composants/modal/modalrender';
 
 
 export default function Home() {
@@ -25,10 +26,8 @@ export default function Home() {
   return (
     <div className="dashboarddiv">
       <Navbar/>
-      {modalState.CreateTaskModal && <CreateTaskModal />}
-      {modalState.EditTaskModal && <EditModalTask />}
-      {modalState.signInModal && <SignIn/> }
-      {modalState.LogOutModal && <LogOut/>} 
+
+      <ModalRender/> 
       <BasicTabs/>
     </div>
     

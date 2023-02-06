@@ -14,6 +14,8 @@ export default function Navbar (){
   let navigate = useNavigate();
   const { showLogOut, setShowLogOut} = useContext(RegisterContext)
   const {modalState, setModalState} = useContext(ModalContext)
+  const [user, setUser] = React.useState(null);
+  const setShowProfile = () => { setModalState({ProfileModal: true}) }
   const setShowLogOutModal = () => { setModalState({LogOutModal: true}) }
   const NavigateSignUp = () => {navigate("/signup")}
  const ShowLoginModal = () => { setModalState({signInModal: true}) }
@@ -22,20 +24,23 @@ export default function Navbar (){
   return (
     <nav className="navbar" id="top">
       <div className="navcontent">
-          <div className="logo"><img src={logo} onClick={NavigateKanban}/> ProPlanner</div>
+          <div className="logo"><img src={logo} alt="Logo" onClick={NavigateKanban}/> ProPlanner</div>
           
           <div id="buttons">
           {showLogOut === false ? (
             <>
               <Button  onClick={NavigateSignUp}>Inscription</Button>
               <Button variant="contained"  onClick={ShowLoginModal}>Connexion</Button>
+              
             </>
           ) : (
+            <>
             <Button variant="contained"   onClick={setShowLogOutModal}>
               Déconnexion
             </Button>
+            <Button variant="contained"  onClick={setShowProfile}>Profil </Button>
+            </>
           )}
-        
         </div>
       </div>
        

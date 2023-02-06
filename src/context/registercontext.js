@@ -15,7 +15,8 @@ export function RegisterStateProvider(props){
     const [showSignUpModal, setShowSignUpModal] = useState(false);
     const [showLogOutModal, setShowLogOutModal] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
-    
+    const [currentUser, setCurrentUser] = useState(null);
+
     useEffect(()=>{
       onAuthStateChanged(auth, (user) => {
           if (user) {

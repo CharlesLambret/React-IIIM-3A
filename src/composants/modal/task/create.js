@@ -19,6 +19,7 @@ export default function CreateTaskModal () {
     const handleCloseModal = () => { setModalState({CreateTaskModal: false}) }
     return(
         <div className="modal-background">
+           <i class="closebutton" onClick={handleCloseModal}>✕</i>  
           <form onSubmit={posttask} className="modal-form">
             <label>
               Titre de la tâche :

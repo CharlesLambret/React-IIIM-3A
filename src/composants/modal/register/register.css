@@ -39,3 +39,11 @@
     border: 2px solid #0C9EC0;
     border-radius: 5px;
 }
+.closebutton{
+    self-align:flex-start;
+    margin-right:95%;
+    margin-top:1%;
+}
+.closebutton:hover{
+    cursor:pointer;
+}

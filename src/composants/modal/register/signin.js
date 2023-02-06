@@ -12,7 +12,6 @@ export const SignIn = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const provider = new GoogleAuthProvider();
 
     const handleSignIn = (e) => {
         e.preventDefault();
@@ -35,7 +34,7 @@ export const SignIn = () => {
     return(
         <>
                     <div className="registermodal">                                                              
-                        <i onClick={handleCloseModal}>✕</i>                
+                        <i class="closebutton" onClick={handleCloseModal}>✕</i>                
                         <form className="modal-form-register">                                              
                             <div className="label-input">
                                 <label htmlFor="email-address">

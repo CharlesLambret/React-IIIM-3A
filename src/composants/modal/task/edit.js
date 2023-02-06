@@ -28,6 +28,7 @@ export default function EditModalTask () {
     const handleCloseModal = () => { setModalState({EditTaskModal: false}) }
     return(
           <div className="modal-background">
+             <i class="closebutton" onClick={handleCloseModal}>✕</i>  
             <form onSubmit={handleUpdateTask}>
               <label htmlFor="title">Titre :</label>
               <input

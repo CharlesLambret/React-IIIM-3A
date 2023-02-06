@@ -1,10 +1,10 @@
 import React, {useState, useContext} from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import {  createUserWithEmailAndPassword  } from 'firebase/auth';
-import {auth} from '../../firebase';
+import {auth} from '../../../firebase';
 import { Input } from '@mui/material';
 import "./signup.css";
-import { RegisterContext } from '../../context/registercontext';
+import { RegisterContext } from '../../../context/registercontext';
 import {Button} from '@mui/material';
 
 
