@@ -6,7 +6,8 @@ import { Input } from '@mui/material';
 import "./signup.css";
 import { RegisterContext } from '../../../context/registercontext';
 import {Button} from '@mui/material';
-
+import {ModalContext} from '../../../context/modalcontext';
+import ModalRender from '../../../composants/modal/modalrender';
 
 export const SignUp = () => {
 
@@ -14,6 +15,7 @@ export const SignUp = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const {errorMessage,setErrorMessage, showLogOut, setShowLogOut} = useContext(RegisterContext);
+    const {modalState, setModalState} = useContext(ModalContext);
 
     const validatePassword = () => {
         let isValid = true
@@ -52,8 +54,10 @@ export const SignUp = () => {
         setConfirmPassword('')
       }
     
-   
-    
+    const handleSignIn = () => { 
+        setModalState({SignInModal: true}) 
+    }
+
  
   return (
             <div  class="global" id="pageSignUp">
@@ -109,7 +113,8 @@ export const SignUp = () => {
                         }
                         <Button type="submit" value="submit">Créer un compte</Button>                                                             
                     </form>
-                                 
+                    <ModalRender/>
+                    <p>Vous avez déjà un compte ? <span id ="gotosignin" onClick={handleSignIn}>Cliquez ici pour vous connecter.</span></p>
                 </div>
             </div>
         
