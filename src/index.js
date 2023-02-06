@@ -15,6 +15,7 @@ import { SignUp } from "./routes/signup/signup";
 import LandingPage from "./routes/landingpage/landingpage";
 import { ModalContextProvider } from "./context/modalcontext";
 import Connexion from "./routes/Connexion/connexion"
+import Home from "./routes/accueil/home";
 
 const router = createBrowserRouter([
   {
@@ -23,8 +24,8 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/kanban",
-        element: <Kanban/>,
+    path: "/home",
+        element: <Home/>,
         errorElement: <ErrorPage />,
     
   },

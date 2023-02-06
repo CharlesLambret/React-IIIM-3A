@@ -20,7 +20,7 @@ export const SignIn = () => {
         .then((userCredential) => {
             // Signed in
             const user = userCredential.user;
-            navigate("/kanban")
+            navigate("/home")
             console.log("user is logged in");
         })
         .catch((error) => {

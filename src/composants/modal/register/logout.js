@@ -22,10 +22,12 @@ export const LogOut = () => {
     const handleCloseModal = () => { setModalState({LogOutModal: false}) }
 
     return(
-                    <div>                                            
-                        <h1> Voulez-vous vous déconnecter ? </h1>                       
+                    <div className='registermodal'>  
+                        <div className='modal-form-register' >
+                        <h2> Voulez-vous vous déconnecter ? </h2>                       
                         <Button onClick={handleCloseModal}>Annuler</Button>
                         <Button onClick={handleLogout}>Se déconnecter</Button>
+                        </div>                                         
                                                    
                     </div>
                

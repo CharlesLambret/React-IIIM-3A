@@ -62,6 +62,10 @@ export default function Home() {
   return (
     <div className="dashboarddiv">
       <Navbar/>
+      {modalState.CreateTaskModal && <CreateTaskModal />}
+      {modalState.EditTaskModal && <EditModalTask />}
+      {modalState.signInModal && <SignIn/> }
+      {modalState.LogOutModal && <LogOut/>} 
       <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" id ="tab">
@@ -69,19 +73,11 @@ export default function Home() {
           <Tab  label="Tableau" {...a11yProps(1)} />
         </Tabs>
       </Box>
-      
-      {modalState.CreateTaskModal && <CreateTaskModal />}
-      {modalState.EditTaskModal && <EditModalTask />}
-      {modalState.signInModal && <SignIn/> }
-      {modalState.LogOutModal && <LogOut/>} 
       <TabPanel value={value} index={0}>
         <Kanban/>
       </TabPanel>
       <TabPanel value={value} index={1}>
         <TaskTable/>
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        Item Three
       </TabPanel>
     </Box>
     

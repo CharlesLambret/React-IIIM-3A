@@ -17,11 +17,12 @@ export default function Navbar (){
   const setShowLogOutModal = () => { setModalState({LogOutModal: true}) }
   const NavigateSignUp = () => {navigate("/signup")}
  const ShowLoginModal = () => { setModalState({signInModal: true}) }
+  const NavigateKanban = () => {navigate("/home")}
 
   return (
     <nav className="navbar" id="top">
       <div className="navcontent">
-          <div className="logo"><img src={logo} /> ProPlanner</div>
+          <div className="logo"><img src={logo} onClick={NavigateKanban}/> ProPlanner</div>
           
           <div id="buttons">
           {showLogOut === false ? (

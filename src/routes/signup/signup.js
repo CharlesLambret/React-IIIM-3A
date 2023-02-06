@@ -39,6 +39,7 @@ export const SignUp = () => {
  
   return (
             <div  class="global" id="pageSignUp">
+                
                 <div class="registerform">                  
                     <h1> Créez votre compte </h1>                                                                            
                     <form onSubmit={handleSignUp}>                                                                                            

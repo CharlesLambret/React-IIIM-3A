@@ -2,6 +2,10 @@ import "./landingpage.css";
 import { Button } from "@mui/material"
 import { useNavigate } from "react-router";
 import Navbar from "../../composants/navbar/navbar";
+import { ModalContext } from "../../context/modalcontext";
+import { useContext } from "react";
+import { SignIn } from "../../composants/modal/register/signin";
+import { LogOut } from "../../composants/modal/register/logout";
 
 export default function LandingPage (){
 
@@ -13,14 +17,16 @@ export default function LandingPage (){
     const youtube = require("../../Image/youtube.png");
     const facebook = require("../../Image/facebook.png");
     let navigate = useNavigate();
-    const NavigateKanban = () => { navigate("/kanban") }
-
+    const NavigateKanban = () => { navigate("/home") }
+    const {modalState} = useContext(ModalContext)
 
 
     return(
         
         <div className="global">
             <Navbar/>
+            {modalState.signInModal && <SignIn/> }
+            {modalState.LogOutModal && <LogOut/>} 
             <div className="hero">
                 
                 <div className="gauche" >
