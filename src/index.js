@@ -14,6 +14,7 @@ import "./index.css";
 import { SignUp } from "./routes/signup/signup";
 import LandingPage from "./routes/landingpage/landingpage";
 import { ModalContextProvider } from "./context/modalcontext";
+import Connexion from "./routes/Connexion/connexion"
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,12 @@ const router = createBrowserRouter([
     element: <SignUp/>,
     errorElement: <ErrorPage />,
   },
+  {
+    path: "/connexion",
+    element: <Connexion/>,
+    errorElement: <ErrorPage />
+
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

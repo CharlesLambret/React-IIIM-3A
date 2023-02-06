@@ -58,14 +58,10 @@ export default function Home() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  const handleOpenCreateTaskModal = () => {
-    setModalState({ ...modalState, CreateTaskModal: true });
-  };
 
   return (
     <div className="dashboarddiv">
       <Navbar/>
-      <Button variant="contained" id="bouton1"  onClick={handleOpenCreateTaskModal}>Ajouter une tâche</Button>
       <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" id ="tab">

@@ -3,26 +3,38 @@ import {useContext } from "react";
 import { Button } from "@mui/material";
 import { ModalContext } from "../../../context/modalcontext";
 import "./taskcrud.css"
-
+import { updateDoc, doc } from "firebase/firestore";
+import { db } from "../../../firebase";   
 export default function EditModalTask () {
 
 
-  const {title, setTitle, description, setDescription,  startDate, setStartDate, endDate, setEndDate, status, setStatus, handleNewSubmit} = useContext(TaskContext)
+  const {title, newTitle, description, setEditingTask, setDescription,  startDate, setStartDate, endDate, setEndDate, status, setStatus, handleNewSubmit} = useContext(TaskContext)
   const {modalState, setModalState} = useContext(ModalContext);
   
   const handleClose  = () => {
     setModalState({ ...modalState, EditModalTask: false });
     console.log("Modal fermée")
   };
+  async function handleUpdateTask ({task})  {
+    updateDoc(doc(db, 'tasksdata', task.id), {
+      title : newTitle,
+      description : description,
+      startDate : startDate,
+      endDate : endDate,
+      status : status
+    }).then(() => {
+
+      setEditingTask(null);
+    })}
 
     return(
           <div className="modal-background">
-            <form onSubmit={handleNewSubmit}>
+            <form onSubmit={handleUpdateTask}>
               <label htmlFor="title">Titre :</label>
               <input
                 type="text"
                 name="title"
-                onChange={(e) => setTitle(e.target.value)}
+                onChange={(e) => newTitle(e.target.value)}
               />
         
               <label htmlFor="description">Description :</label>

@@ -4,7 +4,7 @@ import {TaskContext} from "../../context/taskcontext";
 import { useEffect } from "react";
 import { getDoc } from "firebase/firestore";
 import { useLocation } from "react-router";
-
+import OpenTaskEditButton from "../buttons/edittaskmodal";
 import "./task.css";
 
 export default function TaskCard( {task} ){
@@ -19,11 +19,8 @@ export default function TaskCard( {task} ){
                 <p>{task.description} </p>
                 <p>{task.startDate} - {task.endDate}</p>
                 <div className="task-actions">
-                  <Button className="TaskButton" onClick={() => handleDeleteTask({task})}>Delete</Button>
-                  <Button className="TaskButton" onClick={() => {
-                                                                    startEditTask({task});
-                                                        
-                                                                }}>Edit</Button>
+                  <Button className="TaskButton" onClick={handleDeleteTask({task})}>Delete</Button>
+                  <OpenTaskEditButton/>
 
                 </div>
                 </CardContent>

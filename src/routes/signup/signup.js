@@ -19,16 +19,19 @@ export const SignUp = () => {
     const handleSignUp = async (e) => {
         createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-          
+          setShowLogOut(true);
           const user = userCredential.user;
           // ...
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          setError(error.origin="register", error.show="true");               
+          setError(error.origin="register", error.show="true");    
+          console.log(errorMessage);           
           // ..
         });
+        
+          
     }
     
    
