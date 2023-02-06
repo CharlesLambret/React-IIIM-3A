@@ -14,6 +14,7 @@ import LandingPage from "./routes/landingpage/landingpage";
 import { ModalContextProvider } from "./context/modalcontext";
 import Connexion from "./routes/Connexion/connexion"
 import Footer from "./composants/footer/footer";
+import Home from "./routes/accueil/home";
 
 const router = createBrowserRouter([
   
