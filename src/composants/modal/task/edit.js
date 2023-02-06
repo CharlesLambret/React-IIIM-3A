@@ -23,10 +23,9 @@ export default function EditModalTask () {
       endDate : endDate,
       status : status
     }).then(() => {
-
-      setEditingTask(null);
+      console.log("Document successfully updated!");
     })}
-
+    const handleCloseModal = () => { setModalState({EditTaskModal: false}) }
     return(
           <div className="modal-background">
             <form onSubmit={handleUpdateTask}>
@@ -68,7 +67,7 @@ export default function EditModalTask () {
                 <option value="terminé">terminé</option>
               </select>
               <Button variant="contained" value="submit" type="submit">Modifier</Button>
-              <Button variant="text" onClick={handleClose}>Annuler</Button>
+              <Button variant="text" onClick={handleCloseModal}>Annuler</Button>
             </form>
           </div>
     )

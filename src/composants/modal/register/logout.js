@@ -9,22 +9,22 @@ import { useContext } from 'react';
 
 export const LogOut = () => {
     const {setModalState} = useContext(ModalContext)
-    const setShowLogOutModal = () => { setModalState({LogOutModal: true}) }
     let navigate = useNavigate();
     const handleLogout = () => {               
         signOut(auth).then(() => {
         navigate("/signup")
-            
+        setModalState({LogOutModal: false})
             console.log("Signed out successfully")
         }).catch((error) => {
         // An error happened.
         });
     }
- 
+    const handleCloseModal = () => { setModalState({LogOutModal: false}) }
+
     return(
                     <div>                                            
                         <h1> Voulez-vous vous déconnecter ? </h1>                       
-                        <Button onClick={setShowLogOutModal}>Annuler</Button>
+                        <Button onClick={handleCloseModal}>Annuler</Button>
                         <Button onClick={handleLogout}>Se déconnecter</Button>
                                                    
                     </div>

@@ -16,9 +16,7 @@ export default function CreateTaskModal () {
       endDate: endDate,
       status: status
     }); 
-      const handleCloseCreateTaskModal = () => {
-        setModalState({ ...modalState, CreateTaskModal: false });
-      };
+    const handleCloseModal = () => { setModalState({CreateTaskModal: false}) }
     return(
         <div className="modal-background">
           <form onSubmit={posttask} className="modal-form">
@@ -76,7 +74,7 @@ export default function CreateTaskModal () {
             <Button id="AddtaskButton" variant="contained" type="submit">Ajouter</Button>
             <Button
               type="button"
-              onClick={handleCloseCreateTaskModal}
+              onClick={handleCloseModal}
             >
               Annuler
             </Button>

@@ -1,14 +1,41 @@
-.registerform{
-    width:30vw;
-    margin-left:35vw;
+
+.registermodal{
+    width:50%;
+    height:50%;
     background-color:white;
-    display:flex;
-    flex-direction:column;
-    align-items:flex-start;
-    justify-content:center;
-    padding:1%;
+    z-index:999;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 8px;
+    position: fixed; 
+    top: 50%; left: 50%; /* à 50%/50% du parent référent */
+    transform: translate(-50%, -50%); /* décalage de 50% de sa propre taille */
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      color: #19274E;
+      font-weight: 500;
+      font-family: 'Roboto','Segoe UI';
+      font-size: 18px;
 }
-.inputdiv{
+.registermodal i {
+    float:right;
+}
+.modal-form-register{
+    width:70%;
+    height:80%;
+    padding:3%;
+    justify-content:space-between;
+    align-items:center;
+}
+.label-input{
     display:flex;
     flex-direction:column;
+    margin-top:2%;
+
+}
+.label-input input{
+    height: 30px;
+    border: 2px solid #0C9EC0;
+    border-radius: 5px;
 }

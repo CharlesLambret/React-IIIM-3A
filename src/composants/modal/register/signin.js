@@ -7,34 +7,12 @@ import { Modal } from '@mui/material';
 import { Button } from '@mui/material';
 import "./register.css"
 export const SignIn = () => {
+
     const {modalState, setModalState} = useContext(ModalContext)
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const provider = new GoogleAuthProvider();
-    
-    const handleGoogle = (e) => {
-        e.preventDefault();
-        signInWithRedirect(auth, provider)
-        .then((result) => {
-          // This gives you a Google Access Token. You can use it to access the Google API.
-          const credential = GoogleAuthProvider.credentialFromResult(result);
-          const token = credential.accessToken;
-          // The signed-in user info.
-          const user = result.user;
-          // ...
-        }).catch((error) => {
-          // Handle Errors here.
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          // The email of the user's account used.
-          const email = error.email;
-          // The AuthCredential type that was used.
-          const credential = GoogleAuthProvider.credentialFromError(error);
-          // ...
-        })
-    }
-
 
     const handleSignIn = (e) => {
         e.preventDefault();
@@ -52,15 +30,16 @@ export const SignIn = () => {
         });
        
     }
+    const handleCloseModal = () => { setModalState({SignInModal: false}) }
  
     return(
         <>
-                    <div className="modal-background">                                                              
-                                                       
-                        <form className="modal-form">                                              
-                            <div>
+                    <div className="registermodal">                                                              
+                        <i onClick={handleCloseModal}>✕</i>                
+                        <form className="modal-form-register">                                              
+                            <div className="label-input">
                                 <label htmlFor="email-address">
-                                    Email address
+                                    Adresse email
                                 </label>
                                 <input
                                     id="email-address"
@@ -72,9 +51,9 @@ export const SignIn = () => {
                                 />
                             </div>
 
-                            <div>
+                            <div  className="label-input">
                                 <label htmlFor="password">
-                                    Password
+                                    Mot de passe
                                 </label>
                                 <input
                                     id="password"
@@ -86,16 +65,16 @@ export const SignIn = () => {
                                 />
                             </div>
                                                 
-                            <div>
-                                <button                                    
+                            <div  className="label-input">
+                                <Button variant="contained"                                    
                                     onClick={handleSignIn}                                        
                                 >      
                                     Login                                                                  
-                                </button>
+                                </Button>
                             </div>                               
                         </form>
-                        <Button class="btngoogle" variant="contained" onClick={handleGoogle}>Se connecter avec Google</Button>
-                        <p className="text-sm text-white text-center">
+                       
+                        <p>
                             No account yet? {' '}
                             <NavLink to="/signup">
                                 Sign up
