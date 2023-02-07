@@ -1,10 +1,10 @@
-import { ModalContext } from "../../../context/modalcontext"
-import TaskCard from "../../../composants/cards/task"
-import { TaskContext } from "../../../context/taskcontext"
+import { ModalContext } from "../../context/modalcontext"
+import TaskCard from "../cards/task"
+import { TaskContext } from "../../context/taskcontext"
 import { useContext } from "react"
 import "./kanban.css"
 import { blueGrey } from '@mui/material/colors';
-import OpenTaskCreateButton from "../../../composants/buttons/opencreatetask"
+import OpenTaskCreateButton from "../buttons/opencreatetask"
 
 const plus = require('../../../Image/plus.png')
 const tab = blueGrey[200];
@@ -76,7 +76,7 @@ export default function Kanban({task}){
     {tasks
       .filter(task => task.status === "terminé")
       .map(task => (
-        <TaskCard task={task}/>
+        <TaskCard key = {task.id} task={task}/>
             ))}
           
         </div>

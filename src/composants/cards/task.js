@@ -13,7 +13,7 @@ export default function TaskCard( {task} ){
    
     return (
         
-        <Card sx={{ minWidth: 275 }} key={tasks.id} className="kanban-task">
+        <Card sx={{ minWidth: 275 }} key={task.id} className="kanban-task">
                 <CardContent className="content">
                 <h3>{task.title}</h3>
                 <p>{task.description} </p>

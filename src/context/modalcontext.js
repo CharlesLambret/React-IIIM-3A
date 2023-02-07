@@ -13,7 +13,7 @@ export function ModalContextProvider(props) {
     EditTaskModal: false,
     ProfileModal : false,
   })
-
+  const[isOnTableTab, setIsOnTableTab] = useState(false);
   const toggleModals = modal => {
     if(modal === "CreateTask") {
       setModalState({
@@ -72,7 +72,7 @@ export function ModalContextProvider(props) {
   }
 
   return (
-    <ModalContext.Provider value={{modalState, setModalState, toggleModals}}>
+    <ModalContext.Provider value={{modalState, setModalState, toggleModals, isOnTableTab, setIsOnTableTab}}>
       {props.children}
     </ModalContext.Provider>
   )

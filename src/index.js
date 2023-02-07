@@ -12,6 +12,7 @@ import "./index.css";
 import { SignUp } from "./routes/register/signup/signup";
 import LandingPage from "./routes/landingpage/landingpage";
 import { ModalContextProvider } from "./context/modalcontext";
+import Footer from "./composants/footer/footer";
 import Home from "./routes/accueil/home";
 
 const router = createBrowserRouter([
@@ -50,6 +51,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             </TaskContextProvider>
           </ModalContextProvider>
       </RegisterStateProvider>
+      <Footer/>
     
   </div>
   

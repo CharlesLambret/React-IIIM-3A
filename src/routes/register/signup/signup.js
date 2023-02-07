@@ -55,6 +55,7 @@ export const SignUp = () => {
       }
     
     const handleSignIn = () => { 
+        navigate("/")
         setModalState({SignInModal: true}) 
     }
 
