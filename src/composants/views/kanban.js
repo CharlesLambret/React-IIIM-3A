@@ -28,7 +28,7 @@ export default function Kanban({task}){
   
   <div className="kanban-column" id='non-demarrer'>
     {tasks
-      .filter(task => task.status === "non démarré")
+      .filter(task => task.status === "Non démarré")
       .map(task => (
         <TaskCard task={task}/>
       ))}
@@ -43,7 +43,7 @@ export default function Kanban({task}){
    </div>
   <div className="kanban-column" id='en-cours'>
     {tasks
-      .filter(task => task.status === "en cours")
+      .filter(task => task.status === "En cours")
       .map(task => (
         <TaskCard task={task}/>
       ))}
@@ -59,7 +59,7 @@ export default function Kanban({task}){
   <div className="kanban-column" id='recettage'>
     
     {tasks
-      .filter(task => task.status === "recettage")
+      .filter(task => task.status === "Recettage")
       .map(task => (
         <TaskCard task={task}/>
       ))}
@@ -74,7 +74,7 @@ export default function Kanban({task}){
   </div>
   <div className="kanban-column" id='terminer'>
     {tasks
-      .filter(task => task.status === "terminé")
+      .filter(task => task.status === "Terminé")
       .map(task => (
         <TaskCard key = {task.id} task={task}/>
             ))}
