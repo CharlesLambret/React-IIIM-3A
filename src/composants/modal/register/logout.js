@@ -25,8 +25,8 @@ export const LogOut = () => {
                     <div className='registermodal'>  
                         <div className='modal-form-register' >
                         <h2> Voulez-vous vous déconnecter ? </h2>                       
-                        <Button onClick={handleCloseModal}>Annuler</Button>
-                        <Button onClick={handleLogout}>Se déconnecter</Button>
+                        <Button className="bouton1" onClick={handleCloseModal}>Annuler</Button>
+                        <Button className="bouton1" onClick={handleLogout}>Se déconnecter</Button>
                         </div>                                         
                                                    
                     </div>

@@ -24,13 +24,13 @@ const TodoList = () => {
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
         />
-        <Button variant="contained" type="submit">Ajouter</Button>
+        <Button className="bouton1" variant="contained" type="submit">Ajouter</Button>
       </form>
       <ul>
         {tasks.map((task, index) => (
           <li key={index}>
             {task}
-            <Button variant="contained" type="button" onClick={() => handleDelete(index)}>
+            <Button className="bouton1" variant="contained" type="button" onClick={() => handleDelete(index)}>
               Supprimer
             </Button>
           </li>

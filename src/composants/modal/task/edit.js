@@ -67,8 +67,8 @@ export default function EditModalTask () {
                 <option value="recettage">recettage</option>
                 <option value="terminé">terminé</option>
               </select>
-              <Button variant="contained" value="submit" type="submit">Modifier</Button>
-              <Button variant="text" onClick={handleCloseModal}>Annuler</Button>
+              <Button className="bouton1" variant="contained" value="submit" type="submit">Modifier</Button>
+              <Button className="bouton1" variant="text" onClick={handleCloseModal}>Annuler</Button>
             </form>
           </div>
     )

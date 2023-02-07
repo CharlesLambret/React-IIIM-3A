@@ -1,7 +1,7 @@
 import "./buttons.css";
 import { ModalContext } from "../../context/modalcontext";
 import { useContext } from "react";
-const plus = require("../../Image/plus.png");
+import { Button } from "@mui/material";
 
 
 export default function OpenTaskCreateButton (){
@@ -13,11 +13,10 @@ export default function OpenTaskCreateButton (){
       };
       return (
         <div id="createtask" onClick={handleOpenCreateTaskModal}>
-        {isOnTableTab && (
-          <p>Ajouter une tâche </p>
-        )
-        }
-        <img src={plus} id="CreateButton" alt="" className='img-add' onClick={handleOpenCreateTaskModal}/>
+        
+        <Button className="bouton1" id="CreateButton" alt=""  onClick={handleOpenCreateTaskModal}>
+          Ajouter une tâche
+          </Button>
         </div>
       )
 }

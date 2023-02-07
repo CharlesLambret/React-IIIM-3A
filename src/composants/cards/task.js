@@ -13,13 +13,13 @@ export default function TaskCard( {task} ){
    
     return (
         
-        <Card sx={{ minWidth: 275 }} key={tasks.id} className="kanban-task">
+        <Card sx={{ minWidth: 275 }} key={task.id} className="kanban-task">
                 <CardContent className="content">
                 <h3>{task.title}</h3>
                 <p>{task.description} </p>
                 <p>{task.startDate} - {task.endDate}</p>
                 <div className="task-actions">
-                  <Button className="TaskButton" onClick={handleDeleteTask({task})}>Delete</Button>
+                  <Button className="bouton1" className="TaskButton" onClick={handleDeleteTask({task})}>Delete</Button>
                   <OpenTaskEditButton/>
 
                 </div>

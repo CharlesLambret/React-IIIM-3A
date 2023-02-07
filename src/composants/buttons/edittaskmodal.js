@@ -10,6 +10,6 @@ export default function OpenTaskEditButton (){
         setModalState({ ...modalState, EditTaskModal: true });
       };
       return (
-        <Button variant="contained" onClick={handleOpenEditTaskModal}>Modifier</Button>
+        <Button className="bouton1" variant="contained" onClick={handleOpenEditTaskModal}>Modifier</Button>
       )
 }

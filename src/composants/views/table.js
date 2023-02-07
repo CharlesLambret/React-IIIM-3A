@@ -1,15 +1,16 @@
 import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from "@mui/material"
-import { TaskContext } from "../../../context/taskcontext"
+import { TaskContext } from "../../context/taskcontext"
 import { useContext } from "react";
-import { ModalContext } from "../../../context/modalcontext";
-import OpenTaskCreateButton from "../../../composants/buttons/opencreatetask"
+import { ModalContext } from "../../context/modalcontext";
+import OpenTaskCreateButton from "../buttons/opencreatetask"
 import {Paper} from "@mui/material"
 import "./kanban.css"
+import OpenTaskEditButton from "../buttons/edittaskmodal";
+import DeleteTaskButton from "../buttons/deletaskbutton";
 
 
 export default function TaskTable(){
-    const {setisOnTableTab, isOnTableTab} = useContext(ModalContext)
-
+    const {modalState, setModalState} = useContext(ModalContext);
     const {tasks} = useContext(TaskContext);
     
     return (
@@ -40,6 +41,8 @@ export default function TaskTable(){
                 <TableCell align="right">{task.startDate}</TableCell>
                 <TableCell align="right">{task.endDate}</TableCell>
                 <TableCell align="right">{task.status}</TableCell>
+                <TableCell align="right"><OpenTaskEditButton key={task.id} task={task}/></TableCell>
+                <TableCell align="right"><DeleteTaskButton key={task.id} task={task}/></TableCell>
               </TableRow>
             ))}
           </TableBody>

@@ -4,9 +4,9 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import Kanban from './views/kanban';
+import Kanban from '../../composants/views/kanban';
 import TaskCard from '../../composants/cards/task';
-import TaskTable from './views/table';
+import TaskTable from '../../composants/views/table';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -52,16 +52,16 @@ export default function BasicTabs() {
     <Box variant="fullWidth" id ="TabBox" centered>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Kanban" {...a11yProps(0)} />
-          <Tab label="Tableau" {...a11yProps(1)} />
+          <Tab label="Tableau" {...a11yProps(0)} />
+          <Tab label="Kanban" {...a11yProps(1)} />
           
         </Tabs>
       </Box>
       <TabPanel value={value} index={0} >
-        <Kanban/>
+      <TaskTable/>
       </TabPanel>
       <TabPanel value={value} index={1} >
-        <TaskTable/>
+        <Kanban/>
       </TabPanel>
     </Box>
   );

@@ -16,6 +16,11 @@ export default function CreateTaskModal () {
       endDate: endDate,
       status: status,
     }); 
+    
+    const handleStatusChange = (e) => {
+      setStatus(e.target.value);
+      console.log(status);
+    };
     const handleCloseModal = () => { setModalState({CreateTaskModal: false}) }
     return(
         <div className="modal-background">
@@ -62,24 +67,26 @@ export default function CreateTaskModal () {
               Statut :
               <select
                 name="status"
-                defaultValue="non démarré"
-                value={status}
-                onChange = {(e) => setStatus(e.target.value)}
+                defaultValue="Non démarré"
+                onChange = {handleStatusChange}
                 required
               >
-                <option value="non démarré">Non démarré</option>
-                <option value="en cours">En cours</option>
-                <option value="recettage">Recettage</option>
-                <option value="terminé">Terminé</option>
+                <option value="Non démarré">Non démarré</option>
+                <option value="En cours">En cours</option>
+                <option value="Recettage">Recettage</option>
+                <option value="Terminé">Terminé</option>
               </select>
             </label>
-            <Button id="AddtaskButton" variant="contained" type="submit">Ajouter</Button>
-            <Button
+            <div className="modal-buttons">
+            <Button className="bouton1" id="AddtaskButton" variant="contained" type="submit">Ajouter</Button>
+            <Button className="bouton1"
               type="button"
               onClick={handleCloseModal}
             >
               Annuler
             </Button>
+              </div>
+           
           </form>
         </div>
     );

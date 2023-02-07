@@ -112,7 +112,7 @@ export const SignUp = () => {
                             </div>
                         )
                         }
-                        <Button type="submit" value="submit">Créer un compte</Button>                                                             
+                        <Button className="bouton1" type="submit" value="submit">Créer un compte</Button>                                                             
                     </form>
                     <ModalRender/>
                     <p>Vous avez déjà un compte ? <span id ="gotosignin" onClick={handleSignIn}>Cliquez ici pour vous connecter.</span></p>
