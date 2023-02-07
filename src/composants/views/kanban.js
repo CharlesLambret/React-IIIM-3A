@@ -6,7 +6,7 @@ import "./kanban.css"
 import { blueGrey } from '@mui/material/colors';
 import OpenTaskCreateButton from "../buttons/opencreatetask"
 
-const plus = require('../../../Image/plus.png')
+const plus = require('../../Image/plus.png')
 const tab = blueGrey[200];
 
 export default function Kanban({task}){
@@ -17,13 +17,13 @@ export default function Kanban({task}){
     <div className="dashboard">
       <h2>Kanban des tâches</h2>
 
-      
+      <OpenTaskCreateButton/>
       <div  className="kanban-container">
 
 <div className='box'  >
   <div className='flex'>
     <h3>Non démarré</h3> 
-    <OpenTaskCreateButton/>
+    
   </div>
   
   <div className="kanban-column" id='non-demarrer'>
@@ -38,7 +38,7 @@ export default function Kanban({task}){
 <div className='box'>
   <div className='flex'>
       <h3>En cours</h3>
-    <OpenTaskCreateButton/>
+    
 
    </div>
   <div className="kanban-column" id='en-cours'>
@@ -53,7 +53,7 @@ export default function Kanban({task}){
 <div className='box'>
   <div className='flex'>
     <h3>Recettage</h3>
-    <OpenTaskCreateButton/>
+    
 
   </div>
   <div className="kanban-column" id='recettage'>
@@ -69,7 +69,7 @@ export default function Kanban({task}){
 <div className='box'>
   <div className='flex'>
     <h3>Terminé</h3>
-    <OpenTaskCreateButton/>
+    
 
   </div>
   <div className="kanban-column" id='terminer'>

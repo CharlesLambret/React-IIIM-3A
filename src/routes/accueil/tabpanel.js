@@ -52,16 +52,16 @@ export default function BasicTabs() {
     <Box variant="fullWidth" id ="TabBox" centered>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Kanban" {...a11yProps(0)} />
-          <Tab label="Tableau" {...a11yProps(1)} />
+          <Tab label="Tableau" {...a11yProps(0)} />
+          <Tab label="Kanban" {...a11yProps(1)} />
           
         </Tabs>
       </Box>
       <TabPanel value={value} index={0} >
-        <Kanban/>
+      <TaskTable/>
       </TabPanel>
       <TabPanel value={value} index={1} >
-        <TaskTable/>
+        <Kanban/>
       </TabPanel>
     </Box>
   );

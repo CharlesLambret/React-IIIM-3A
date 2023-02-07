@@ -2,14 +2,19 @@ import { db} from "../../firebase"
 import {doc, deleteDoc} from 'firebase/firestore'
 import { Button } from '@mui/material'
 
-export default function DeleteTaskButton({task}){
-    const handleDeleteTask= async (task) => {
-        const id = task.id
-        const reference = doc(db, 'taskdata', id)
-        await deleteDoc(reference)
+export default function DeleteTaskButton(task){
+    async function handleDeleteTask(task)  {
+        try{
+            const reference = doc(db, 'taskdata', task.id)
+            await deleteDoc(reference)
+        }catch(error){
+            console.log(error)
+        }
+      
+        
     }
     return(
-        <Button className="deletebutton" onClick={handleDeleteTask}>
+        <Button className="bouton1 deletebutton"  onClick={handleDeleteTask}>
             Supprimer
         </Button>
     )

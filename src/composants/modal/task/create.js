@@ -77,13 +77,16 @@ export default function CreateTaskModal () {
                 <option value="Terminé">Terminé</option>
               </select>
             </label>
-            <Button id="AddtaskButton" variant="contained" type="submit">Ajouter</Button>
-            <Button
+            <div className="modal-buttons">
+            <Button className="bouton1" id="AddtaskButton" variant="contained" type="submit">Ajouter</Button>
+            <Button className="bouton1"
               type="button"
               onClick={handleCloseModal}
             >
               Annuler
             </Button>
+              </div>
+           
           </form>
         </div>
     );

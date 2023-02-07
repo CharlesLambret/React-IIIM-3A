@@ -19,7 +19,7 @@ export default function TaskCard( {task} ){
                 <p>{task.description} </p>
                 <p>{task.startDate} - {task.endDate}</p>
                 <div className="task-actions">
-                  <Button className="TaskButton" onClick={handleDeleteTask({task})}>Delete</Button>
+                  <Button className="bouton1" className="TaskButton" onClick={handleDeleteTask({task})}>Delete</Button>
                   <OpenTaskEditButton/>
 
                 </div>

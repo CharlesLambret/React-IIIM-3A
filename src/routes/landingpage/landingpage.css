@@ -49,25 +49,6 @@ p{
     border-radius: 10px;
     margin-top: 10vh;
 }
-#bouton1{
-    width: 10vw;
-    margin-top: 20px;
-    background-color: #F5FDFF;
-    border: 2px solid #0C9EC0;
-    border-radius: 5px;
-    font-weight: bold;
-    color: #0C9EC0;
-    height: 50px;
-    box-shadow: inherit;
- }
-
- #bouton1:hover{
-    cursor: pointer;
-    background-color: #0C9EC0;
-    border: 2px solid #F5FDFF;
-    color: #F5FDFF;
- }
-
  .main{
     background-color: white ;
     border-radius: 10px;
@@ -223,7 +204,7 @@ p{
     border-radius: 10px;
     margin-top: 10vh;
 }
-#bouton1{
+bouton1{
     width: 10vw;
     margin-top: 20px;
     background-color: #F5FDFF;
@@ -235,7 +216,7 @@ p{
     box-shadow: inherit;
  }
 
- #bouton1:hover{
+ bouton1:hover{
     cursor: pointer;
     background-color: #0C9EC0;
     border: 2px solid #F5FDFF;

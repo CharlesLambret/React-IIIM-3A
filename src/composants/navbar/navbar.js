@@ -29,16 +29,16 @@ export default function Navbar (){
           <div id="buttons">
           {showLogOut === false ? (
             <div className="buttondiv">
-              <Button  onClick={NavigateSignUp}>Inscription</Button>
-              <Button variant="contained"  onClick={ShowLoginModal}>Connexion</Button>
+              <Button className="bouton1"  onClick={NavigateSignUp}>Inscription</Button>
+              <Button className="bouton1" variant="contained"  onClick={ShowLoginModal}>Connexion</Button>
               
             </div>
           ) : (
             <div className="buttondiv">
-            <Button variant="contained"   onClick={setShowLogOutModal}>
+            <Button className="bouton1" variant="contained"   onClick={setShowLogOutModal}>
               Déconnexion
             </Button>
-            <Button variant="contained"  onClick={setShowProfile}>Profil </Button>
+            <Button className="bouton1" variant="contained"  onClick={setShowProfile}>Profil </Button>
             </div>
           )}
         </div>

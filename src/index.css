@@ -9,6 +9,25 @@ body {
   overflow-x:hidden;
 }
 
+.bouton1{
+  width: 10vw !important;
+  background-color: #F5FDFF   !important;
+  margin:1%;
+  border: 2px solid #0C9EC0 !important;
+  border-radius: 5px !important;
+  font-weight: bold   !important;
+  color: #0C9EC0 !important;
+  height: 50px !important;
+  box-shadow: inherit !important;
+}
+
+.bouton1:hover{
+  cursor: pointer !important;
+  background-color: #0C9EC0 !important;
+  border: 2px solid #F5FDFF !important;
+  color: #F5FDFF !important;
+}
+
 .global{
   max-width:100vw;
 }

@@ -5,6 +5,6 @@ export default function DiscoverProductButton() {
     let navigate = useNavigate();
     const NavigateKanban = () => { navigate("/home") }
     return (
-        <Button variant="contained" id="bouton1" onClick={NavigateKanban} >Découvrir</Button>
+        <Button className="bouton1" variant="contained" onClick={NavigateKanban} >Découvrir</Button>
     )
 }
